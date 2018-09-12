@@ -19,6 +19,23 @@ h3 {
 	align-items: center;
 }
 
+.goesHere {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.answers {
+	background: black;
+	border-top: black;
+	border-right: black;
+	border-left: black;
+	border-bottom: solid #39ff14 2px;
+	color: #39ff14;
+	width: 8px;
+	margin: 10px;
+}
+
 button {
 	width: 70px;
 	height: 20px;
@@ -32,7 +49,7 @@ main {
 	margin: 20px;
 }
 
-section {
+.letters {
 	display: grid;
 	grid-gap: 10px;
 	max-width: 200px;

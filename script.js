@@ -10,6 +10,11 @@ inputButton.addEventListener('click', function(e) {
 		dataStored.push(dataField)
 		document.querySelector('.data').value = ''
 	}
+	for (i =0; i < dataStored[0].length; i++) {
+		var div = document.createElement('input')
+		div.classList.add('answers')
+		document.querySelector('.goesHere').appendChild(div)
+	}
 })
 
 const letterButton = document.querySelector('.letters')
