@@ -32,14 +32,26 @@ h3 {
 	border-left: black;
 	border-bottom: solid #39ff14 2px;
 	color: #39ff14;
-	width: 8px;
+	width: 10px;
 	margin: 10px;
 }
 
-button {
+.inputButton {
 	width: 70px;
 	height: 20px;
 	text-align: center;
+}
+
+.rest {
+	border-radius: 5px;
+	border: black;
+	background: #39ff14;
+}
+
+.reset {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 main {
