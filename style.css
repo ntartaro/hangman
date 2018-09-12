@@ -98,7 +98,7 @@ main {
 	display: grid;
 	grid-area: "d";
 	text-align: center;
-	border-radius: 5px;
+	border-radius: 7px;
 	background-color: #39ff14;
 	color: black;
 	width: 18px;

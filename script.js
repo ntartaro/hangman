@@ -1,16 +1,20 @@
+//
 // Data storage and input
+//
+var flipper = true
 var dataStored = []
 const inputField = document.querySelector('.inputField')
 const inputButton = document.querySelector('.inputButton')
 var dataField = document.querySelector('.data').value
 
+// Begin button
 inputButton.addEventListener('click', function(e) {
 	e.preventDefault()
-	
 	var dataField = document.querySelector('.data').value
 	if (dataField == '') {
 		return
 	} else { 
+		flipper = false
 		inputField.style.display = 'none'
 		dataStored.push(dataField)
 		document.querySelector('.data').value = ''
@@ -29,7 +33,7 @@ const remove = document.querySelector('.goesHere')
 
 resetButton.addEventListener('click', function(e) {
 	if (inputField.style.display == 'none' || dataField == '') {
-
+		flipper = true
 		inputField.style.display = ''
 		dataStored = []
 
@@ -48,6 +52,9 @@ const letterButton = document.querySelector('.letters')
 
 letterButton.addEventListener('click', function(e) {
 	e.preventDefault()
+	if (flipper == true) {
+		return
+	} 
 	e.target.style.background = 'black'
 	e.target.style.color = '#39ff14'
 
