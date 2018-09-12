@@ -14,3 +14,31 @@ button {
 	height: 20px;
 	text-align: center;
 }
+
+section {
+	display: grid;
+	grid-gap: 10px;
+	max-width: 200px;
+	align-items: center;
+	justify-content: center;
+/*	grid-template-rows: 5;*/
+/*	grid-template: repeat(6, 1fr) / repeat(6, 1fr); */
+/*	grid-template-columns: 6;*/
+	grid-template-areas: 
+	"d d d d d d"
+	"d d d d d d"
+	"d d d d d d"
+	"d d d d d d";
+/*	". . d d . .";*/
+}
+
+.alphabet {
+	display: grid;
+	grid-area: "d";
+	text-align: center;
+	border-radius: 5px;
+	background-color: #39ff14;
+	color: black;
+	width: 15px;
+	height: 15px;
+}

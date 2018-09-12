@@ -1,12 +1,15 @@
-var dataField = document.querySelector('.data').value
+var dataStored = []
+// var dataField = document.querySelector('.data').value
 
+const inputButton = document.querySelector('.inputButton')
 
-
-function saveData() {
+inputButton.addEventListener('click', function(e) {
+	e.preventDefault()
 	var dataField = document.querySelector('.data').value
-	localStorage.setItem('text', dataField)
-}
-
-function retrieveData() {
-
-}
+	if (dataField == '') {
+		return
+	} else { 
+		dataStored.push(dataField)
+		document.querySelector('.data').value = ''
+	}
+})
