@@ -3,33 +3,39 @@
 //
 var flipper = true
 var dataStored = []
+var dataSplit = []
 const inputField = document.querySelector('.inputField')
 const inputButton = document.querySelector('.inputButton')
 var dataField = document.querySelector('.data').value
 
+
 // Begin button
 inputButton.addEventListener('click', function(e) {
+
 	e.preventDefault()
 	var dataField = document.querySelector('.data').value
+	
 	if (dataField == '') {
 		return
 	} else { 
 		flipper = false
 		inputField.style.display = 'none'
-		dataStored.push(dataField)
+		dataStored = dataField.split('')
+		// dataStored.push(dataField)
+		// dataSplit.push(dataStored[0].split(''))
 		document.querySelector('.data').value = ''
 	}
 
-	for (i =0; i < dataStored[0].length; i++) {
+	for (i =0; i < dataStored.length; i++) {
 		var div = document.createElement('input')
 		div.classList.add('answers')
-		document.querySelector('.goesHere').appendChild(div)
+		document.querySelector('.answersGoHere').appendChild(div)
 	}
 })
 
 // Reset button
 const resetButton = document.querySelector('.rest')
-const remove = document.querySelector('.goesHere')
+const remove = document.querySelector('.answersGoHere')
 
 resetButton.addEventListener('click', function(e) {
 	if (inputField.style.display == 'none' || dataField == '') {
@@ -57,13 +63,11 @@ letterButton.addEventListener('click', function(e) {
 	} 
 	e.target.style.background = 'black'
 	e.target.style.color = '#39ff14'
+	//e.target.style.border = 'solid 1px #39ff14' (this needs work maybe)
 
 	for (i = 0; i < dataStored.length; i++) {
-		if (dataStored[0][i] == e.target.textContent) {
+		if (dataStored[i] == e.target.textContent) {
 			document.querySelectorAll('.answers')[i].value = e.target.textContent
-			console.log('HEY')
-		} else if (dataStored[0][i + 1] == e.target.textContent) {
-			document.querySelectorAll('.answers')[i + 1].value = e.target.textContent
 			console.log('HEY')
 		}
 	}
@@ -72,7 +76,7 @@ letterButton.addEventListener('click', function(e) {
 
 // Hangman builder
 //     __________
-//     |20| //     |
+//     || //     |
 //     ||//      |
 //     ||/       |
 //     ||        0

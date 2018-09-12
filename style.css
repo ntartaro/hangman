@@ -1,10 +1,12 @@
 body {
 	background-color: black;
+    font-family: 'VT323', monospace;
 }
 
+/*Hangman Title*/
 h3 {
-	margin-top: -35px;
-	padding-left: 200px;
+	margin-top: -38px;
+	padding-left: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -12,6 +14,7 @@ h3 {
 
 }
 
+/*Gallows*/
 .gallows {
 	color: #39ff14;
 	display: flex;
@@ -19,23 +22,17 @@ h3 {
 	align-items: center;
 }
 
-.goesHere {
+/*Wrapper for letters created by input*/
+.answersGoHere {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.data {
-	background: black;
-	border-top: black;
-	border-right: black;
-	border-left: black;
-	border-bottom: 2px solid #39ff14;
-	color: #39ff14;
-
-}
-
+/*Letters created by input field*/
 .answers {
+	font-size: 20px;
+	font-family: 'VT323', monospace;
 	text-align: center;
 	background: black;
 	border-top: black;
@@ -47,27 +44,7 @@ h3 {
 	margin: 10px;
 }
 
-.inputButton {
-	width: 70px;
-	height: 20px;
-	text-align: center;
-	background: #39ff14;
-	border-radius: 5px;
-	border: black;
-}
-
-.rest {
-	border-radius: 5px;
-	border: black;
-	background: #39ff14;
-}
-
-.reset {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
+/*Wrapper for input field + begin button*/
 main {
 	display: flex;
 	justify-content: center;
@@ -75,23 +52,70 @@ main {
 	margin: 20px;
 }
 
+/*Input field*/
+.data {
+	font-size: 20px;
+	font-family: 'VT323', monospace;
+	background: black;
+	border-top: black;
+	border-right: black;
+	border-left: black;
+	border-bottom: 2px solid #39ff14;
+	color: #39ff14;
+}
+
+/*Begin button*/
+.inputButton {
+	font-size: 17px;
+	font-family: 'VT323', monospace;
+	width: 70px;
+	height: 25px;
+	text-align: center;
+	color: #39ff14;
+	background: black;
+	border-radius: 5px;
+	border: solid 1px #39ff14;
+}
+
+/*Wrapper for reset button*/
+.reset {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*Reset button*/
+.rest {
+	margin-top: 10px;
+	font-size: 15px;
+	font-family: 'VT323', monospace;
+	height: 25px;
+	color: #39ff14;
+	background: black;
+	border-radius: 5px;
+	border: solid 1px #39ff14;
+}
+
+/*Wrapper for letter buttons*/
 .letters {
 	display: grid;
 	grid-gap: 10px;
 	max-width: 200px;
+	margin:	auto;
 	align-items: center;
 	justify-content: center;
-/*	grid-template-rows: 5;	
-	grid-template-columns: 6;
-	grid-template: repeat(6, 1fr) / repeat(6, 1fr); */
 	grid-template-areas: 
 	"d d d d d d"
 	"d d d d d d"
 	"d d d d d d"
 	"d d d d d d";
 /*	". . d d . .";*/
+/*	grid-template-rows: 5;	
+	grid-template-columns: 6;
+	grid-template: repeat(6, 1fr) / repeat(6, 1fr); */
 }
 
+/*Clickable letter buttons*/
 .alphabet {
 	justify-content: center;
 	align-items: center;
