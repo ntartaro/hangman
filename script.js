@@ -1,19 +1,21 @@
-
 // Data storage and input
 var dataStored = []
-const input1 = document.querySelector('.input1')
+const inputField = document.querySelector('.inputField')
 const inputButton = document.querySelector('.inputButton')
+var dataField = document.querySelector('.data').value
 
 inputButton.addEventListener('click', function(e) {
 	e.preventDefault()
-	input1.style.display = 'none'
+	
 	var dataField = document.querySelector('.data').value
 	if (dataField == '') {
 		return
 	} else { 
+		inputField.style.display = 'none'
 		dataStored.push(dataField)
 		document.querySelector('.data').value = ''
 	}
+
 	for (i =0; i < dataStored[0].length; i++) {
 		var div = document.createElement('input')
 		div.classList.add('answers')
@@ -21,6 +23,25 @@ inputButton.addEventListener('click', function(e) {
 	}
 })
 
+// Reset button
+const resetButton = document.querySelector('.rest')
+const remove = document.querySelector('.goesHere')
+
+resetButton.addEventListener('click', function(e) {
+	if (inputField.style.display == 'none' || dataField == '') {
+
+		inputField.style.display = ''
+		dataStored = []
+
+		for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
+			document.querySelectorAll('.alphabet')[i].style.background = '#39ff14'
+			document.querySelectorAll('.alphabet')[i].style.color = 'black'	
+		}
+		while (remove.hasChildNodes()) {  
+    		remove.removeChild(remove.firstChild)
+		}
+	}
+})
 
 // Letter buttons
 const letterButton = document.querySelector('.letters')
@@ -42,9 +63,7 @@ letterButton.addEventListener('click', function(e) {
 })
 
 
-//document.querySelectorAll('.answers')
-
-//Hangman builder
+// Hangman builder
 //     __________
 //     |20| //     |
 //     ||//      |
@@ -57,9 +76,8 @@ letterButton.addEventListener('click', function(e) {
 // .___||_____     ___.
 // ||        \\      ||
 // ||         \\     ||
-
-var counter = 0
-if (counter == 1) {
-	document.querySelector('.gallows').textContent[28] = "|"
-}
+// var counter = 0
+// if (counter == 1) {
+// 	document.querySelector('.gallows').textContent[28] = "|"
+// }
 
