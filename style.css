@@ -2,11 +2,21 @@ body {
 	background-color: black;
 }
 
-h1 {
+h3 {
+	margin-top: -35px;
+	padding-left: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: #39ff14;
+
+}
+
+.gallows {
+	color: #39ff14;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 button {
@@ -40,6 +50,8 @@ section {
 }
 
 .alphabet {
+	justify-content: center;
+	align-items: center;
 	display: grid;
 	grid-area: "d";
 	text-align: center;

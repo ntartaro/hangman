@@ -1,6 +1,5 @@
 var dataStored = []
 const inputButton = document.querySelector('.inputButton')
-const letterButton = document.querySelector('.letters')
 
 inputButton.addEventListener('click', function(e) {
 	e.preventDefault()
@@ -13,6 +12,7 @@ inputButton.addEventListener('click', function(e) {
 	}
 })
 
+const letterButton = document.querySelector('.letters')
 
 letterButton.addEventListener('click', function(e) {
 	e.preventDefault()
