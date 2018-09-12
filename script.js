@@ -1,7 +1,6 @@
 var dataStored = []
-// var dataField = document.querySelector('.data').value
-
 const inputButton = document.querySelector('.inputButton')
+const letterButton = document.querySelector('.letters')
 
 inputButton.addEventListener('click', function(e) {
 	e.preventDefault()
@@ -12,4 +11,11 @@ inputButton.addEventListener('click', function(e) {
 		dataStored.push(dataField)
 		document.querySelector('.data').value = ''
 	}
+})
+
+
+letterButton.addEventListener('click', function(e) {
+	e.preventDefault()
+	e.target.style.background = 'black'
+	e.target.style.color = '#39ff14'
 })
