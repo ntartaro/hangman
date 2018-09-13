@@ -170,15 +170,15 @@
 			<input class="lost e" type="text">
 		</div>
 		<div class="generatedAnswers">
-			
+					<!-- <input class="answers" type="text"> -->
 		</div>
-		<!-- <input class="answers" type="text"> -->
+
 	</section>
 
 	<main>
 		<form class="inputField">
 			<input class="data" type="text" 
-					onkeyup="this.value = this.value.toUpperCase()" >
+					onkeyup="this.value = validateKeyStrokes(this.value)" >
 			<button class="inputButton">BEGIN</button>
 		</form>
 	</main>
