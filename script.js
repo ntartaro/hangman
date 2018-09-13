@@ -1,12 +1,15 @@
 //
 // Data storage and input
 //
+
 var counter = 0
-var flipper = true												//one flippy boi
-var dataStored = []												//Array with input word split into string letters
-const inputField = document.querySelector('.inputField')		//Input field
-const inputButton = document.querySelector('.inputButton')		//Begin button
-var dataField = document.querySelector('.data').value			//Value of input field
+var flipper = true													//one flippy boi
+var dataStored = []													//Array with input word split into string letters
+var theGallows = document.querySelector('.gallows pre').textContent //The gallows current state
+const inputField = document.querySelector('.inputField')			//Input field
+const inputButton = document.querySelector('.inputButton')			//Begin button
+var dataField = document.querySelector('.data').value				//Value of input field
+const validAnswers = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '-']
 
 
 // Begin button
@@ -14,7 +17,9 @@ inputButton.addEventListener('click', function(e) {
 
 	e.preventDefault()
 	var dataField = document.querySelector('.data').value
-	
+	// for (i = 0; i < validAnswers.length; i++) {
+	// 	if (dataField.value !== validAnswers[]
+	// }
 	if (dataField == '') {
 		return
 	} else { 
@@ -31,7 +36,7 @@ inputButton.addEventListener('click', function(e) {
 			div.style.border = 'solid 2px black'
 			div.value = dataStored[i]
 		}
-		
+
 		document.querySelector('.answersGoHere').appendChild(div)
 	}
 })
@@ -68,99 +73,39 @@ letterButton.addEventListener('click', function(e) {
 	e.target.style.color = '#39ff14'
 	//e.target.style.border = 'solid 1px #39ff14' (this needs work maybe)
 
-	for (i = 0; i < dataStored.length; i++) {
-		if (dataStored[i] == e.target.textContent) {
-			document.querySelectorAll('.answers')[i].value = e.target.textContent
-			console.log('SUCCESS')
-		} 
-	}
+
+	if (dataStored.indexOf(e.target.textContent) >= 0) {
+
+		for (i = 0; i < dataStored.length; i++) {
+			if (dataStored[i] == e.target.textContent) {
+				document.querySelectorAll('.answers')[i].value = e.target.textContent
+				console.log('SUCCESS')
+					} 
+				} 
+			} else {
+				counter ++
+	}		
 })
 
-
-// Hangman builder
-//     __________
+// 	// Wrong answer results
+// 	if (counter == 1) {
+// 		document.querySelector('.gallows pre').textContent = `    __________
 //     || //     |
 //     ||//      |
 //     ||/       |
-//     ||        0
-//     ||       /|\
-//     ||        |
-//     ||       / \
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||
-
-//     __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||       /|\
-//     ||        |
-//     ||       / 
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||
-
-//     __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||       /|\
-//     ||        |
 //     ||        
 //     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||
-
-
-//     __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||       /|\
-//     ||        
-//     ||        
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||
-
-
-//     __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||        |\
-//     ||        
-//     ||        
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||
-
-
-//     __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||        |
 //     ||        
 //     ||       
 //     ||       
 // .___||_____     ___.
 // ||        \\      ||
 // ||         \\     ||
+// `
+// 	}
 
-
-//     __________
+// 	if (counter == 2) {
+// 		document.querySelector('.gallows pre').textContent =`    __________
 //     || //     |
 //     ||//      |
 //     ||/       |
@@ -172,20 +117,215 @@ letterButton.addEventListener('click', function(e) {
 // .___||_____     ___.
 // ||        \\      ||
 // ||         \\     ||
+// `
+// 	}
 
-
-//     __________
+// 	if (counter == 3) {
+// 		document.querySelector('.gallows pre').textContent =`    __________
 //     || //     |
 //     ||//      |
 //     ||/       |
-//     ||        
-//     ||       
+//     ||        0
+//     ||        |
 //     ||        
 //     ||       
 //     ||       
 // .___||_____     ___.
 // ||        \\      ||
+// ||         \\     ||`
+// 	}
+
+// 	if (counter == 4) {
+// 		document.querySelector('.gallows pre').textContent =`    __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        0
+//     ||        |\
+//     ||        
+//     ||        
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
+// ||         \\     ||`
+// 	}
+
+// 	if (counter == 5) {
+// 		document.querySelector('.gallows pre').textContent =`    __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        0
+//     ||       /|`\
+//     ||        
+//     ||        
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
 // ||         \\     ||
+// `
+// 	}
+
+// 	if (counter == 6) {
+// 		document.querySelector('.gallows pre').textContent =`    __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        0
+//     ||       /|\
+//     ||        |
+//     ||        
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
+// ||         \\     ||
+// `
+// 	}
+
+// 	if (counter == 7) {
+// 		document.querySelector('.gallows pre').textContent =`    __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        0
+//     ||       /|\
+//     ||        |
+//     ||       / 
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
+// ||         \\     ||
+// `
+// 	}
+
+// 	if (counter == 8) {
+// 		document.querySelector('.gallows pre').textContent =`    __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        0
+//     ||       /|\
+//     ||        |
+//     ||       / \
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
+// ||         \\     ||
+// `
+// 	}
+
+
+
+
+// // Hangman builder
+// //     __________
+// //     || //     |
+// //     ||//      |
+// //     ||/       |
+// //     ||        0
+// //     ||        |
+// //     ||        |
+// //     ||       / \
+// //     ||       
+// // .___||_____     ___.
+// // ||        \\      ||
+// // ||         \\     ||
+
+// //     __________
+// //     || //     |
+// //     ||//      |
+// //     ||/       |
+// //     ||        0
+// //     ||       /|\
+// //     ||        |
+// //     ||       / 
+// //     ||       
+// // .___||_____     ___.
+// // ||        \\      ||
+// // ||         \\     ||
+
+// //     __________
+// //     || //     |
+// //     ||//      |
+// //     ||/       |
+// //     ||        0
+// //     ||       /|\
+// //     ||        |
+// //     ||        
+// //     ||       
+// // .___||_____     ___.
+// // ||        \\      ||
+// // ||         \\     ||
+
+
+// //     __________
+// //     || //     |
+// //     ||//      |
+// //     ||/       |
+// //     ||        0
+// //     ||       /|\
+// //     ||        
+// //     ||        
+// //     ||       
+// // .___||_____     ___.
+// // ||        \\      ||
+// // ||         \\     ||
+
+
+// //     __________
+// //     || //     |
+// //     ||//      |
+// //     ||/       |
+// //     ||        0
+// //     ||        |\
+// //     ||        
+// //     ||        
+// //     ||       
+// // .___||_____     ___.
+// // ||        \\      ||
+// // ||         \\     ||
+
+
+// //     __________
+// //     || //     |
+// //     ||//      |
+// //     ||/       |
+// //     ||        0
+// //     ||        |
+// //     ||        
+// //     ||       
+// //     ||       
+// // .___||_____     ___.
+// // ||        \\      ||
+// // ||         \\     ||
+
+
+// //     __________
+// //     || //     |
+// //     ||//      |
+// //     ||/       |
+// //     ||        0
+// //     ||      
+// //     ||        
+// //     ||       
+// //     ||       
+// // .___||_____     ___.
+// // ||        \\      ||
+// // ||         \\     ||
+
+
+// //     __________
+// //     || //     |
+// //     ||//      |
+// //     ||/       |
+// //     ||        
+// //     ||       
+// //     ||        
+// //     ||       
+// //     ||       
+// // .___||_____     ___.
+// // ||        \\      ||
+// // ||         \\     ||
 
 
 
