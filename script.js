@@ -59,6 +59,15 @@ resetButton.addEventListener('click', function(e) {
     		remove.removeChild(remove.firstChild)
 		}
 	}
+	document.querySelector('.zero').style.display = 'flex'
+	document.querySelector('.one').style.display = 'none'
+	document.querySelector('.two').style.display = 'none'
+	document.querySelector('.three').style.display = 'none'
+	document.querySelector('.four').style.display = 'none'
+	document.querySelector('.five').style.display = 'none'
+	document.querySelector('.six').style.display = 'none'
+	document.querySelector('.seven').style.display = 'none'
+	document.querySelector('.eight').style.display = 'none'
 })
 
 // Letter buttons
@@ -69,6 +78,10 @@ letterButton.addEventListener('click', function(e) {
 	if (flipper == true) {
 		return
 	} 
+	if (e.target.style.color == '#39ff14' || e.target.style.background == 'black') {
+		return
+	}
+
 	e.target.style.background = 'black'
 	e.target.style.color = '#39ff14'
 	//e.target.style.border = 'solid 1px #39ff14' (this needs work maybe)
