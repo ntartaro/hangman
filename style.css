@@ -27,6 +27,41 @@ h3 {
 	align-items: center;
 }
 
+.zero {
+	display: ;
+}
+
+.one {
+	display: none;
+}
+
+.two {
+	display: none;
+}
+
+.three {
+	display: none;
+}
+
+.four {
+	display: none;
+}
+
+.five {
+	display: none;
+}
+
+.six {
+	display: none;
+}
+
+.seven {
+	display: none;
+}
+
+.eight {
+	display: none;
+}
 /*Wrapper for letters created by input*/
 .answersGoHere {
 	display: flex;

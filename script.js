@@ -2,7 +2,7 @@
 // Data storage and input
 //
 
-var counter = 0
+var counter = 0														//Gallows status counter
 var flipper = true													//one flippy boi
 var dataStored = []													//Array with input word split into string letters
 var theGallows = document.querySelector('.gallows pre').textContent //The gallows current state
@@ -84,136 +84,46 @@ letterButton.addEventListener('click', function(e) {
 				} 
 			} else {
 				counter ++
-	}		
+				console.log('FAILURE')
+	}
+
+	if (counter == 1) {
+		document.querySelector('.zero').style.display = 'none'
+		document.querySelector('.one').style.display = 'flex'
+	}
+	if (counter == 2) {
+		document.querySelector('.one').style.display = 'none'
+		document.querySelector('.two').style.display = 'flex'
+	}
+	if (counter == 3) {
+		document.querySelector('.two').style.display = 'none'
+		document.querySelector('.three').style.display = 'flex'
+	}
+	if (counter == 4) {
+		document.querySelector('.three').style.display = 'none'
+		document.querySelector('.four').style.display = 'flex'
+	}
+	if (counter == 5) {
+		document.querySelector('.four').style.display = 'none'
+		document.querySelector('.five').style.display = 'flex'
+	}
+	if (counter == 6) {
+		document.querySelector('.five').style.display = 'none'
+		document.querySelector('.six').style.display = 'flex'
+	}	
+	if (counter == 7) {
+		document.querySelector('.six').style.display = 'none'
+		document.querySelector('.seven').style.display = 'flex'
+	}
+	if (counter == 8) {
+		document.querySelector('.seven').style.display = 'none'
+		document.querySelector('.eight').style.display = 'flex'
+		for (i = 0; i < document.querySelectorAll('.alphabet').length; i ++) {
+			document.querySelectorAll('.alphabet')[i].style.background = 'black'
+			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
+		}
+	}							
 })
-
-// 	// Wrong answer results
-// 	if (counter == 1) {
-// 		document.querySelector('.gallows pre').textContent = `    __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        
-//     ||       
-//     ||        
-//     ||       
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||
-// `
-// 	}
-
-// 	if (counter == 2) {
-// 		document.querySelector('.gallows pre').textContent =`    __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||      
-//     ||        
-//     ||       
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||
-// `
-// 	}
-
-// 	if (counter == 3) {
-// 		document.querySelector('.gallows pre').textContent =`    __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||        |
-//     ||        
-//     ||       
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||`
-// 	}
-
-// 	if (counter == 4) {
-// 		document.querySelector('.gallows pre').textContent =`    __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||        |\
-//     ||        
-//     ||        
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||`
-// 	}
-
-// 	if (counter == 5) {
-// 		document.querySelector('.gallows pre').textContent =`    __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||       /|`\
-//     ||        
-//     ||        
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||
-// `
-// 	}
-
-// 	if (counter == 6) {
-// 		document.querySelector('.gallows pre').textContent =`    __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||       /|\
-//     ||        |
-//     ||        
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||
-// `
-// 	}
-
-// 	if (counter == 7) {
-// 		document.querySelector('.gallows pre').textContent =`    __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||       /|\
-//     ||        |
-//     ||       / 
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||
-// `
-// 	}
-
-// 	if (counter == 8) {
-// 		document.querySelector('.gallows pre').textContent =`    __________
-//     || //     |
-//     ||//      |
-//     ||/       |
-//     ||        0
-//     ||       /|\
-//     ||        |
-//     ||       / \
-//     ||       
-// .___||_____     ___.
-// ||        \\      ||
-// ||         \\     ||
-// `
-// 	}
-
 
 
 
@@ -326,10 +236,3 @@ letterButton.addEventListener('click', function(e) {
 // // .___||_____     ___.
 // // ||        \\      ||
 // // ||         \\     ||
-
-
-
-
-
-
-
