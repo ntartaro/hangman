@@ -1,12 +1,12 @@
 //
 // Data storage and input
 //
-var flipper = true
-var dataStored = []
-var dataSplit = []
-const inputField = document.querySelector('.inputField')
-const inputButton = document.querySelector('.inputButton')
-var dataField = document.querySelector('.data').value
+var counter = 0
+var flipper = true												//one flippy boi
+var dataStored = []												//Array with input word split into string letters
+const inputField = document.querySelector('.inputField')		//Input field
+const inputButton = document.querySelector('.inputButton')		//Begin button
+var dataField = document.querySelector('.data').value			//Value of input field
 
 
 // Begin button
@@ -21,14 +21,17 @@ inputButton.addEventListener('click', function(e) {
 		flipper = false
 		inputField.style.display = 'none'
 		dataStored = dataField.split('')
-		// dataStored.push(dataField)
-		// dataSplit.push(dataStored[0].split(''))
 		document.querySelector('.data').value = ''
 	}
 
 	for (i =0; i < dataStored.length; i++) {
 		var div = document.createElement('input')
 		div.classList.add('answers')
+		if (dataStored[i] == " " || dataStored[i] == "-") {
+			div.style.border = 'solid 2px black'
+			div.value = dataStored[i]
+		}
+		
 		document.querySelector('.answersGoHere').appendChild(div)
 	}
 })
@@ -68,8 +71,8 @@ letterButton.addEventListener('click', function(e) {
 	for (i = 0; i < dataStored.length; i++) {
 		if (dataStored[i] == e.target.textContent) {
 			document.querySelectorAll('.answers')[i].value = e.target.textContent
-			console.log('HEY')
-		}
+			console.log('SUCCESS')
+		} 
 	}
 })
 
@@ -87,8 +90,106 @@ letterButton.addEventListener('click', function(e) {
 // .___||_____     ___.
 // ||        \\      ||
 // ||         \\     ||
-// var counter = 0
-// if (counter == 1) {
-// 	document.querySelector('.gallows').textContent[28] = "|"
-// }
+
+//     __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        0
+//     ||       /|\
+//     ||        |
+//     ||       / 
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
+// ||         \\     ||
+
+//     __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        0
+//     ||       /|\
+//     ||        |
+//     ||        
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
+// ||         \\     ||
+
+
+//     __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        0
+//     ||       /|\
+//     ||        
+//     ||        
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
+// ||         \\     ||
+
+
+//     __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        0
+//     ||        |\
+//     ||        
+//     ||        
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
+// ||         \\     ||
+
+
+//     __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        0
+//     ||        |
+//     ||        
+//     ||       
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
+// ||         \\     ||
+
+
+//     __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        0
+//     ||      
+//     ||        
+//     ||       
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
+// ||         \\     ||
+
+
+//     __________
+//     || //     |
+//     ||//      |
+//     ||/       |
+//     ||        
+//     ||       
+//     ||        
+//     ||       
+//     ||       
+// .___||_____     ___.
+// ||        \\      ||
+// ||         \\     ||
+
+
+
+
+
+
 

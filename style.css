@@ -14,6 +14,11 @@ h3 {
 
 }
 
+.gallow-wrapper {
+	margin-top: -25px;
+	margin-bottom: 15px;
+}
+
 /*Gallows*/
 .gallows {
 	color: #39ff14;
@@ -49,7 +54,9 @@ main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 20px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	margin-left: 83px;
 }
 
 /*Input field*/
@@ -62,10 +69,13 @@ main {
 	border-left: black;
 	border-bottom: 2px solid #39ff14;
 	color: #39ff14;
+	width: 157px;
+
 }
 
 /*Begin button*/
 .inputButton {
+	margin-left: 8px;
 	font-size: 17px;
 	font-family: 'VT323', monospace;
 	width: 70px;
@@ -82,6 +92,7 @@ main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-top: 15px;
 }
 
 /*Reset button*/
