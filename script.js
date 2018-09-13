@@ -1,7 +1,7 @@
 //
 // Data storage and input
 //
-
+var deleter = document.querySelectorAll('.answers')
 var counter = 0														//Gallows status counter
 var flipper = true													//one flippy boi
 var dataStored = []													//Array with input word split into string letters
@@ -10,6 +10,14 @@ const inputField = document.querySelector('.inputField')			//Input field
 const inputButton = document.querySelector('.inputButton')			//Begin button
 var dataField = document.querySelector('.data').value				//Value of input field
 const validAnswers = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '-']
+
+document.querySelector('.y').value = 'Y'
+document.querySelector('.o').value = 'O'
+document.querySelector('.u').value = 'U'
+document.querySelector('.l').value = 'L'
+document.querySelector('.o').value = 'O'
+document.querySelector('.s').value = 'S'
+document.querySelector('.e').value = 'E'
 
 
 // Begin button
@@ -43,7 +51,7 @@ inputButton.addEventListener('click', function(e) {
 
 // Reset button
 const resetButton = document.querySelector('.rest')
-const remove = document.querySelector('.answersGoHere')
+const remove = document.querySelector('.generatedAnswers')
 
 resetButton.addEventListener('click', function(e) {
 	if (inputField.style.display == 'none' || dataField == '') {
@@ -68,20 +76,28 @@ resetButton.addEventListener('click', function(e) {
 	document.querySelector('.six').style.display = 'none'
 	document.querySelector('.seven').style.display = 'none'
 	document.querySelector('.eight').style.display = 'none'
+	document.querySelector('.loser').style.display = 'none'
+	counter = 0
 })
 
+
 // Letter buttons
+
 const letterButton = document.querySelector('.letters')
 
 letterButton.addEventListener('click', function(e) {
 	e.preventDefault()
+
+	// Stops letters from being clicked if game has not begun
 	if (flipper == true) {
 		return
 	} 
-	if (e.target.style.color == '#39ff14' || e.target.style.background == 'black') {
+	// Stops already clicked letters from being clicked again
+	if (e.target.style.color == 'rgb(57, 255, 20)' || e.target.style.background.color == 'black') {	 
 		return
 	}
 
+	// Styles letters after being clicked
 	e.target.style.background = 'black'
 	e.target.style.color = '#39ff14'
 	//e.target.style.border = 'solid 1px #39ff14' (this needs work maybe)
@@ -100,6 +116,7 @@ letterButton.addEventListener('click', function(e) {
 				console.log('FAILURE')
 	}
 
+	// Gallows status
 	if (counter == 1) {
 		document.querySelector('.zero').style.display = 'none'
 		document.querySelector('.one').style.display = 'flex'
@@ -128,13 +145,23 @@ letterButton.addEventListener('click', function(e) {
 		document.querySelector('.six').style.display = 'none'
 		document.querySelector('.seven').style.display = 'flex'
 	}
+
+	// Game over condition
 	if (counter == 8) {
 		document.querySelector('.seven').style.display = 'none'
 		document.querySelector('.eight').style.display = 'flex'
+		document.querySelector('.loser').style.display = 'flex'
+
+		var deleter = document.querySelectorAll('.answers').forEach(el => {
+			el.parentNode.removeChild(el)
+		})
+		
+		// Black out all letters
 		for (i = 0; i < document.querySelectorAll('.alphabet').length; i ++) {
 			document.querySelectorAll('.alphabet')[i].style.background = 'black'
 			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
 		}
+
 	}							
 })
 

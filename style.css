@@ -62,6 +62,7 @@ h3 {
 .eight {
 	display: none;
 }
+
 /*Wrapper for letters created by input*/
 .answersGoHere {
 	display: flex;
@@ -82,6 +83,28 @@ h3 {
 	color: #39ff14;
 	width: 10px;
 	margin: 10px;
+}
+
+.loser {
+	display: none;
+}
+
+.lost {
+	font-size: 20px;
+	font-family: 'VT323', monospace;
+	text-align: center;
+	background: black;
+	border-top: black;
+	border-right: black;
+	border-left: black;
+	border-bottom: solid #39ff14 2px;
+	color: #39ff14;
+	width: 10px;
+	margin: 10px;
+}
+
+.lose {
+ border-bottom: solid 2px black;
 }
 
 /*Wrapper for input field + begin button*/
