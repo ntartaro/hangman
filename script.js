@@ -25,9 +25,7 @@ inputButton.addEventListener('click', function(e) {
 
 	e.preventDefault()
 	var dataField = document.querySelector('.data').value
-	// for (i = 0; i < validAnswers.length; i++) {
-	// 	if (dataField.value !== validAnswers[]
-	// }
+
 	if (dataField == '') {
 		return
 	} else { 
@@ -67,6 +65,11 @@ resetButton.addEventListener('click', function(e) {
     		remove.removeChild(remove.firstChild)
 		}
 	}
+
+	document.querySelectorAll('.answers').forEach(function (el) {
+			el.parentNode.removeChild(el)
+	})
+
 	document.querySelector('.zero').style.display = 'flex'
 	document.querySelector('.one').style.display = 'none'
 	document.querySelector('.two').style.display = 'none'
@@ -152,7 +155,7 @@ letterButton.addEventListener('click', function(e) {
 		document.querySelector('.eight').style.display = 'flex'
 		document.querySelector('.loser').style.display = 'flex'
 
-		var deleter = document.querySelectorAll('.answers').forEach(el => {
+		document.querySelectorAll('.answers').forEach(function (el) {
 			el.parentNode.removeChild(el)
 		})
 		
