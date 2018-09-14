@@ -5,7 +5,7 @@ This here is my first coding project for the General Assembly Web Design Immersi
 ![](https://i.imgur.com/WXpHpxL.png)
 
 ## List of Features
-There are several features in the game. 
+There are several features in the game: 
 1. Input field: The word or phrase to be guessed goes here
 2. Begin button: Starts the game with whatever text is in the input field
 3. Letter buttons: The player doing the guessing can press these one by one to try and figure out the hidden word or phrase
@@ -27,5 +27,5 @@ A future feature would be a random word button that pulls a word from a large da
 
 ## Contribution Guidelines
 Any and all input is welcome!
-The main repository can be found at https://github.com/ntartaro/hangman
-The issue tracker can be found at https://github.com/ntartaro/hangman/issues
+- The main repository can be found at https://github.com/ntartaro/hangman
+- The issue tracker can be found at https://github.com/ntartaro/hangman/issues
