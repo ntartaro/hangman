@@ -180,8 +180,8 @@ main {
 	"d d d d d d"
 	"d d d d d d"
 	"d d d d d d"
+	"d d d d d d"
 	"d d d d d d";
-/*	". . d d . .";*/
 }
 
 /*Clickable letter buttons*/
@@ -196,6 +196,15 @@ main {
 	color: black;
 	width: 18px;
 	height: 18px;
+}
+
+.y {
+	grid-column-start: 3;
+	grid-column-end: 4;
+}
+.z {
+	grid-column-start: 4;
+	grid-column-end: 5;
 }
 
 

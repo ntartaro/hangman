@@ -103,6 +103,7 @@ resetButton.addEventListener('click', function(e) {
 // Letter buttons
 //
 const letterButton = document.querySelector('.letters')					// Wrapper for letter buttons
+var countWin = 0														// Counter for win state	
 
 letterButton.addEventListener('click', function(e) {
 	e.preventDefault()
@@ -119,17 +120,31 @@ letterButton.addEventListener('click', function(e) {
 	e.target.style.color = '#39ff14'
 	//e.target.style.border = 'solid 1px #39ff14' (this needs work)
 
+	countWin = 0														// Wipes countWin every iteration
+	document.querySelectorAll('.answers').forEach(function (e) {		// Adds number of blank spaces left to var countWin
+		if (e.value == '') {
+			countWin ++
+			return	
+		 }
+	})
 
-	if (dataStored.indexOf(e.target.textContent) >= 0) {
+	if (countWin == 1) {												// If there are no spaces left, initiates win condition
+		for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
+			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
+			document.querySelectorAll('.alphabet')[i].style.background = 'black'	
+		}
+	}
+
+	if (dataStored.indexOf(e.target.textContent) >= 0) {				// Checks if a clicked letter is in the answer array
 
 		for (i = 0; i < dataStored.length; i++) {
-			if (dataStored[i] == e.target.textContent) {
+			if (dataStored[i] == e.target.textContent) {				// If yes display answer
 				document.querySelectorAll('.answers')[i].value = e.target.textContent
 				console.log('SUCCESS')
 					} 
 				} 
 			} else {
-				counter ++
+				counter ++												// If no advance gallows counter
 				console.log('FAILURE')
 	}
 
@@ -177,27 +192,20 @@ letterButton.addEventListener('click', function(e) {
 			document.querySelectorAll('.alphabet')[i].style.background = 'black'
 			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
 		}
-
-	}	
-
-	document.querySelectorAll('.answers').forEach(function (e) {
-		if (e.value !== '') {
-			for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
-				document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
-				document.querySelectorAll('.alphabet')[i].style.background = 'black'	
-			}
-		}
-	})
-
-	// for (i = 0; i < document.querySelectorAll('.answers').length; i ++) {
-	// 	if (document.querySelectorAll('.answers')[i].value !== '') {
-	// 		for (i = 0; i < document.querySelectorAll('.alphabet').length; i ++) {
-	// 			document.querySelectorAll('.alphabet')[i].style.background = 'black'
-	// 			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
-	// 		}
-	// 	}
-	// }
+	}
 })
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
