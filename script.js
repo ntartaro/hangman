@@ -77,7 +77,7 @@ resetButton.addEventListener('click', function(e) {
 			document.querySelectorAll('.alphabet')[i].style.background = '#39ff14'
 			document.querySelectorAll('.alphabet')[i].style.color = 'black'	
 		}
-		// while (remove.hasChildNodes()) {  										// Deletes answer boxes
+		// while (remove.hasChildNodes()) {  										// Older version of deletes answer boxes, keeping just in case
   		//   remove.removeChild(remove.firstChild)
 		// }
 	}
@@ -180,12 +180,14 @@ letterButton.addEventListener('click', function(e) {
 
 	}	
 
-	// document.querySelectorAll('.answers').forEach(function (e) {
-	// 	if (e.value !== '') {
-	// 		e.style.color = '#39ff14'
-	// 		e.style.background = 'black'
-	// 	}
-	// })
+	document.querySelectorAll('.answers').forEach(function (e) {
+		if (e.value !== '') {
+			for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
+				document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
+				document.querySelectorAll('.alphabet')[i].style.background = 'black'	
+			}
+		}
+	})
 
 	// for (i = 0; i < document.querySelectorAll('.answers').length; i ++) {
 	// 	if (document.querySelectorAll('.answers')[i].value !== '') {
