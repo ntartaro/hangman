@@ -116,7 +116,8 @@ letterButton.addEventListener('click', function(e) {
 	if (e.target.style.color == 'rgb(57, 255, 20)' || e.target.style == 'black') {	 	// Stops already clicked letters from being clicked again
 		return																
 	}
-
+	
+	countWin = 0														// Wipes countWin every iteration
 	e.target.style.background = 'black'									// Styles letters after being clicked
 	e.target.style.color = '#39ff14'
 	//e.target.style.border = 'solid 1px #39ff14' (this needs work)
@@ -164,9 +165,11 @@ letterButton.addEventListener('click', function(e) {
 		document.querySelector('.six').style.display = 'none'
 		document.querySelector('.seven').style.display = 'flex'
 	}
-
+	
 	// Game over condition
-	if (counter == 8) {
+	if (counter == 8 && countWin == 0) {
+		console.log('hey')
+		document.querySelector('.win').style.display = 'none'	
 		document.querySelector('.seven').style.display = 'none'				// Resets gallows
 		document.querySelector('.eight').style.display = 'flex'
 		document.querySelector('.loser').style.display = 'flex'				// Displays game over
@@ -178,10 +181,9 @@ letterButton.addEventListener('click', function(e) {
 		for (i = 0; i < document.querySelectorAll('.alphabet').length; i ++) {		// Black out all letters
 			document.querySelectorAll('.alphabet')[i].style.background = 'black'
 			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
-		}
+		} return
 	}
-
-	countWin = 0														// Wipes countWin every iteration
+	
 	document.querySelectorAll('.answers').forEach(function (e) {		// Adds number of blank spaces left to var countWin
 		if (e.value == '') {
 			console.log(countWin)
@@ -190,7 +192,7 @@ letterButton.addEventListener('click', function(e) {
 		 }
 	})
 
-	if (countWin == 0) {												// If there are no spaces left, initiates win condition
+	if (countWin == 0 && counter !== 8) {								// If there are no spaces left, initiates win condition
 		var gallowsCount = document.querySelectorAll('.g')
 		for (i = 0; i < gallowsCount.length; i++) {
 			gallowsCount[i].style.display = 'none'
@@ -201,4 +203,7 @@ letterButton.addEventListener('click', function(e) {
 			document.querySelectorAll('.alphabet')[i].style.background = 'black'	
 		}
 	}
+
+
+
 })
