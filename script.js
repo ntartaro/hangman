@@ -7,7 +7,7 @@ var dataStored = []													// Array with input word split into string lette
 const inputField = document.querySelector('.inputField')			// Input field
 const inputButton = document.querySelector('.inputButton')			// Begin button
 var dataField = document.querySelector('.data').value				// Value of input field
-//const validAnswers = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '-']
+//const validAnswers = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '-']		// Could eventually have use
 
 document.querySelector('.y').value = 'Y'							// Values for game over 
 document.querySelector('.o').value = 'O'
@@ -96,6 +96,7 @@ resetButton.addEventListener('click', function(e) {
 	document.querySelector('.seven').style.display = 'none'
 	document.querySelector('.eight').style.display = 'none'
 	document.querySelector('.loser').style.display = 'none'
+	document.querySelector('.win').style.display = 'none'
 	counter = 0
 })
 
@@ -120,20 +121,6 @@ letterButton.addEventListener('click', function(e) {
 	e.target.style.color = '#39ff14'
 	//e.target.style.border = 'solid 1px #39ff14' (this needs work)
 
-	countWin = 0														// Wipes countWin every iteration
-	document.querySelectorAll('.answers').forEach(function (e) {		// Adds number of blank spaces left to var countWin
-		if (e.value == '') {
-			countWin ++
-			return	
-		 }
-	})
-
-	if (countWin == 1) {												// If there are no spaces left, initiates win condition
-		for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
-			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
-			document.querySelectorAll('.alphabet')[i].style.background = 'black'	
-		}
-	}
 
 	if (dataStored.indexOf(e.target.textContent) >= 0) {				// Checks if a clicked letter is in the answer array
 
@@ -193,128 +180,25 @@ letterButton.addEventListener('click', function(e) {
 			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
 		}
 	}
+
+	countWin = 0														// Wipes countWin every iteration
+	document.querySelectorAll('.answers').forEach(function (e) {		// Adds number of blank spaces left to var countWin
+		if (e.value == '') {
+			console.log(countWin)
+			countWin ++
+			return	
+		 }
+	})
+
+	if (countWin == 0) {												// If there are no spaces left, initiates win condition
+		var gallowsCount = document.querySelectorAll('.g')
+		for (i = 0; i < gallowsCount.length; i++) {
+			gallowsCount[i].style.display = 'none'
+		}
+		document.querySelector('.win').style.display = 'flex'					
+		for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
+			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
+			document.querySelectorAll('.alphabet')[i].style.background = 'black'	
+		}
+	}
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Hangman builder
-// //     __________
-// //     || //     |
-// //     ||//      |
-// //     ||/       |
-// //     ||        0
-// //     ||        |
-// //     ||        |
-// //     ||       / \
-// //     ||       
-// // .___||_____     ___.
-// // ||        \\      ||
-// // ||         \\     ||
-
-// //     __________
-// //     || //     |
-// //     ||//      |
-// //     ||/       |
-// //     ||        0
-// //     ||       /|\
-// //     ||        |
-// //     ||       / 
-// //     ||       
-// // .___||_____     ___.
-// // ||        \\      ||
-// // ||         \\     ||
-
-// //     __________
-// //     || //     |
-// //     ||//      |
-// //     ||/       |
-// //     ||        0
-// //     ||       /|\
-// //     ||        |
-// //     ||        
-// //     ||       
-// // .___||_____     ___.
-// // ||        \\      ||
-// // ||         \\     ||
-
-
-// //     __________
-// //     || //     |
-// //     ||//      |
-// //     ||/       |
-// //     ||        0
-// //     ||       /|\
-// //     ||        
-// //     ||        
-// //     ||       
-// // .___||_____     ___.
-// // ||        \\      ||
-// // ||         \\     ||
-
-
-// //     __________
-// //     || //     |
-// //     ||//      |
-// //     ||/       |
-// //     ||        0
-// //     ||        |\
-// //     ||        
-// //     ||        
-// //     ||       
-// // .___||_____     ___.
-// // ||        \\      ||
-// // ||         \\     ||
-
-
-// //     __________
-// //     || //     |
-// //     ||//      |
-// //     ||/       |
-// //     ||        0
-// //     ||        |
-// //     ||        
-// //     ||       
-// //     ||       
-// // .___||_____     ___.
-// // ||        \\      ||
-// // ||         \\     ||
-
-
-// //     __________
-// //     || //     |
-// //     ||//      |
-// //     ||/       |
-// //     ||        0
-// //     ||      
-// //     ||        
-// //     ||       
-// //     ||       
-// // .___||_____     ___.
-// // ||        \\      ||
-// // ||         \\     ||
-
-
-// //     __________
-// //     || //     |
-// //     ||//      |
-// //     ||/       |
-// //     ||        
-// //     ||       
-// //     ||        
-// //     ||       
-// //     ||       
-// // .___||_____     ___.
-// // ||        \\      ||
-// // ||         \\     ||

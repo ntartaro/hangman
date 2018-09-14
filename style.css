@@ -63,6 +63,10 @@ h3 {
 	display: none;
 }
 
+.win {
+	display: none;
+}
+
 /*Wrapper for letters created by input*/
 .answersGoHere {
 	display: flex;
@@ -207,7 +211,7 @@ main {
 	grid-column-end: 5;
 }
 
-
+/*Mobile sizing*/
 @media screen and (max-width: 640px) {
   h3 {
   	font-size: 7.5px;
