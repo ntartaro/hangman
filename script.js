@@ -10,10 +10,10 @@ var dataField = document.querySelector('.data').value				// Value of input field
 //const validAnswers = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '-']
 
 document.querySelector('.y').value = 'Y'							// Values for game over 
-document.querySelector('.o').value = '0'
+document.querySelector('.o').value = 'O'
 document.querySelector('.u').value = 'U'
 document.querySelector('.l').value = 'L'
-document.querySelector('.o').value = '0'
+document.querySelector('.otwo').value = 'O'
 document.querySelector('.s').value = 'S'
 document.querySelector('.e').value = 'E'
 
