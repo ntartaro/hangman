@@ -20,10 +20,10 @@ A future feature would be a random word button that pulls a word from a large da
 - Javascript
 
 ## Installation Instructions
-Step 1: Fork the repository
-Step 2: Clone the repository locally
-Step 3: Open the index.html file in your browser of choice
-Step 4: Enjoy!
+- Step 1: Fork the repository
+- Step 2: Clone the repository locally
+- Step 3: Open the index.html file in your browser of choice
+- Step 4: Enjoy!
 
 ## Contribution Guidelines
 Any and all input is welcome!
