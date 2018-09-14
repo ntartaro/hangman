@@ -15,9 +15,9 @@ There are several features in the game.
 A future feature would be a random word button that pulls a word from a large database to enable single player games.
 
 ## Technologies Used
-  -HTML
-  -CSS
-  -Javascript
+  *HTML
+  *CSS
+  *Javascript
 
 ## Installation Instructions
 Step 1: Fork the repository
