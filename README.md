@@ -1,8 +1,8 @@
-#  Football Pool
-This here is my second coding project for the General Assembly Web Design Immersive class. I decided to make a football pool app for users to track their picks and compete with.
+#  Hangman
+This here is my first coding project for the General Assembly Web Design Immersive class. It's a two-player version of the classic game Hangman. One player enters a word while the other tries to guess it in as few guesses as possible.
 
 ## Display Screen
-![](https://i.imgur.com/Mhc5Zgg.png)
+![](https://i.imgur.com/WXpHpxL.png)
 
 ## List of Features
 There are several features in the game: 
@@ -18,11 +18,6 @@ A future feature would be a random word button that pulls a word from a large da
 - HTML
 - CSS
 - Javascript
-- Express
-- Node
-- Handlebars
-- 
-
 
 ## Installation Instructions
 - Step 1: Fork the repository
@@ -32,5 +27,5 @@ A future feature would be a random word button that pulls a word from a large da
 
 ## Contribution Guidelines
 Any and all input is welcome!
-- The main repository can be found at https://github.com/ntartaro/footballpool
-- The issue tracker can be found at https://github.com/ntartaro/footballpool/issues
+- The main repository can be found at https://github.com/ntartaro/hangman
+- The issue tracker can be found at https://github.com/ntartaro/hangman/issues
