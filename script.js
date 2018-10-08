@@ -109,8 +109,6 @@ var countWin = 0														// Counter for win state
 
 letterButton.addEventListener('click', function(e) {
 	e.preventDefault()
-	// console.log(e.target)
-	console.log(e.target.dataset)
 
 	if (flipper == true) {												// Stops letters from being clicked if game has not begun
 		return
@@ -125,7 +123,7 @@ letterButton.addEventListener('click', function(e) {
 	e.target.style.color = '#39ff14'
 	//e.target.style.border = 'solid 1px #39ff14' (this needs work)
 
-
+	
 	if (dataStored.indexOf(e.target.textContent) >= 0) {				// Checks if a clicked letter is in the answer array
 
 		for (i = 0; i < dataStored.length; i++) {

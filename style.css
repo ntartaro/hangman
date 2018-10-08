@@ -171,7 +171,6 @@ main {
 
 /*Wrapper for letter buttons*/
 .letters {
-	background-color: black;
 	border-radius: 6px;
 	padding: 8px 0px 8px 0px;
 	border: solid 2px #39ff14;
