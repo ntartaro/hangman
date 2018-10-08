@@ -103,17 +103,20 @@ resetButton.addEventListener('click', function(e) {
 //
 // Letter buttons
 //
-const letterButton = document.querySelector('.letters')					// Wrapper for letter buttons
+const letterButton = document.querySelector('.letters')	// Wrapper for letter buttons
+letterButton.style.backgroundColor = "black"
 var countWin = 0														// Counter for win state	
 
 letterButton.addEventListener('click', function(e) {
 	e.preventDefault()
+	// console.log(e.target)
+	console.log(e.target.dataset)
 
 	if (flipper == true) {												// Stops letters from being clicked if game has not begun
 		return
 	} 
 
-	if (e.target.style.color == 'rgb(57, 255, 20)' || e.target.style == 'black') {	 	// Stops already clicked letters from being clicked again
+	if (e.target.style.color == 'rgb(57, 255, 20)' || e.target.style.backgroundColor == 'black') {	 	// Stops already clicked letters from being clicked again
 		return																
 	}
 	
@@ -183,7 +186,7 @@ letterButton.addEventListener('click', function(e) {
 			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
 		} return
 	}
-	
+
 	document.querySelectorAll('.answers').forEach(function (e) {		// Adds number of blank spaces left to var countWin
 		if (e.value == '') {
 			console.log(countWin)
@@ -203,7 +206,4 @@ letterButton.addEventListener('click', function(e) {
 			document.querySelectorAll('.alphabet')[i].style.background = 'black'	
 		}
 	}
-
-
-
 })
