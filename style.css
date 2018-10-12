@@ -3,26 +3,30 @@ body {
     font-family: 'VT323', monospace;
 }
 
-/*Hangman Title*/
+/*-------- Hangman Title --------*/
 h3 {
-	margin-top: -38px;
+	margin-top: -22px;
 	padding-left: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: #39ff14;
-
 }
 
-.title {
-	transition: all 1s ease;
-	animation: slidedown 4s linear;
+.title1 {
+	text-shadow: 3px 3px 7px #39ff14;
+	animation: slidedown 3s linear;
+}
 
+.title2 {
+	text-shadow: 3px 3px 7px #39ff14;
+	margin-top: -300px;
+	animation: slidedown 2s linear forwards 3.1s;
 }
 
 .invisible {
-	transition: all 1s ease;
-	animation: opacity 8s linear;
+	opacity: 0;
+	animation: opacity 6s linear forwards 2.2s;
 }
 
 .gallow-wrapper {
@@ -273,10 +277,10 @@ main {
 
 @keyframes slidedown {
 	0% {
-		margin-top: -300px
+		margin-top: -300px;
 	}
 	100% {
-		margin-top: 0px
+		margin-top: 0px;
 	}
 }
 
@@ -286,7 +290,7 @@ main {
 	}
 
 	50% {
-		opacity:0
+		opacity:0;
 	}
 
 	100% {
