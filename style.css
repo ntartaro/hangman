@@ -14,19 +14,20 @@ h3 {
 }
 
 .title1 {
-	text-shadow: 3px 3px 7px #39ff14;
-	animation: slidedown 3s linear;
+	text-shadow: 1px 1px 30px #39ff14, 3px 3px 40px #39ff14;
+	animation: slidedown 2.5s linear;
 }
 
 .title2 {
-	text-shadow: 3px 3px 7px #39ff14;
-	margin-top: -300px;
-	animation: slidedown 2s linear forwards 3.1s;
+	text-shadow: 1px 1px 30px #39ff14, 3px 3px 40px #39ff14;
+	margin-top: -325px;
+	animation: slidedown 1.5s linear forwards 2.65s;
 }
 
 .invisible {
+	display: none;
 	opacity: 0;
-	animation: opacity 6s linear forwards 2.2s;
+	animation: opacity 3s linear forwards;
 }
 
 .gallow-wrapper {
@@ -34,50 +35,58 @@ h3 {
 	margin-bottom: 15px;
 }
 
-/*Gallows*/
+.startWrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	opacity: 0;
+	animation: opacity 4.5s linear forwards 2s;
+}
+
+.startButton {
+	font-size: 45px;
+	font-family: 'VT323', monospace;
+	width: 270px;
+	height: 70px;
+	text-align: center;
+	color: #39ff14;
+	background: black;
+	border-radius: 5px;
+	border: solid 1px #39ff14;
+}
+
+/*-------- Gallows --------*/
 .gallows {
 	color: #39ff14;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-
-.zero {
-	display: ;
-}
-
 .one {
 	display: none;
 }
-
 .two {
 	display: none;
 }
-
 .three {
 	display: none;
 }
-
 .four {
 	display: none;
 }
-
 .five {
 	display: none;
 }
-
 .six {
 	display: none;
 }
-
 .seven {
 	display: none;
 }
-
 .eight {
 	display: none;
 }
-
 .win {
 	display: none;
 }
@@ -127,13 +136,20 @@ h3 {
 }
 
 /*Wrapper for input field + begin button*/
-main {
+.beginWrapper {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	margin-top: 10px;
-	margin-bottom: 30px;
-	margin-left: 83px;
+	margin-bottom: 20px;
+}
+
+.inputField{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 /*Input field*/
@@ -152,7 +168,7 @@ main {
 
 /*Begin button*/
 .inputButton {
-	margin-left: 8px;
+	margin-top: 15px;
 	font-size: 17px;
 	font-family: 'VT323', monospace;
 	width: 70px;
@@ -226,7 +242,7 @@ main {
 	grid-column-end: 5;
 }
 
-/*Mobile sizing*/
+/*-------- Mobile sizing --------*/
 @media screen and (max-width: 640px) {
   h3 {
   	font-size: 7.5px;
@@ -274,7 +290,6 @@ main {
   }
 } 
 
-
 @keyframes slidedown {
 	0% {
 		margin-top: -300px;
@@ -288,10 +303,10 @@ main {
 	0% {
 		opacity:0;
 	}
-
+/* 
 	50% {
 		opacity:0;
-	}
+	} */
 
 	100% {
 		opacity:1;

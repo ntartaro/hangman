@@ -32,6 +32,15 @@ function validateKeyStrokes(val) {									// Passes input from input field
 	return fixedVal													// Sends back fixed input
 }
 
+
+const startButton = document.querySelector('.startButton')
+startButton.addEventListener('click', function(e) {
+	e.preventDefault()
+	document.querySelector('.startWrapper').style.display = 'none'
+	document.querySelector('.invisible').style.display = 'block'
+})
+
+
 //
 // Begin button
 //
