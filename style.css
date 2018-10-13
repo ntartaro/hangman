@@ -27,7 +27,7 @@ h3 {
 .invisible {
 	display: none;
 	opacity: 0;
-	animation: opacity 2s linear forwards;
+	animation: opacity 2.5s linear forwards;
 }
 
 .gallow-wrapper {

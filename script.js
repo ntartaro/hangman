@@ -61,7 +61,7 @@ inputButton.addEventListener('click', function(e) {
 	for (i =0; i < dataStored.length; i++) {						// Creates letter boxes = length of input field value
 		var div = document.createElement('input')					// Creates box
 		div.classList.add('answers')								// Assigns class
-		if (dataStored[i] == " " || dataStored[i] == "-") {			// If an input is a space or dash, create a black bottom box and fill it with the space or dash
+		if (dataStored[i] == " " || dataStored[i] == "-" || dataStored[i] == "'") {			// If an input is a space or dash, create a black bottom box and fill it with the space or dash
 			div.style.border = 'solid 2px black'					
 			div.value = dataStored[i]								
 		}
