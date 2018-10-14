@@ -51,8 +51,6 @@ const randomButton = document.querySelector('.randomButton')
 randomButton.addEventListener('click', function(e) {
 	e.preventDefault()
 	var dataField = words[Math.floor(Math.random() * 274919)]
-	console.log(dataField)
-
 
 	if (dataField == '') {											// Rejects empty field
 		return
@@ -62,6 +60,7 @@ randomButton.addEventListener('click', function(e) {
 		dataStored = dataField.toUpperCase().split('')							// Splits value of input field into seperate strings and sends to array
 		document.querySelector('.data').value = ''					// Clears input field
 		console.log(dataField)
+		console.log(dataStored)
 	}
 
 	for (i =0; i < dataStored.length; i++) {						// Creates letter boxes = length of input field value
@@ -71,7 +70,6 @@ randomButton.addEventListener('click', function(e) {
 			div.style.border = 'solid 2px black'					
 			div.value = dataStored[i]								
 		}
-
 		document.querySelector('.generated').appendChild(div)	// Appends boxes to where they need to go
 	}
 })
@@ -107,7 +105,6 @@ inputButton.addEventListener('click', function(e) {
 // Reset button
 const resetButton = document.querySelector('.rest')								// The reset button
 const remove = document.querySelector('.generated')						// Div containing answers
-
 resetButton.addEventListener('click', function(e) {
 	if (inputField.style.display == 'none' || dataField == '') {				// Only initialize if input field is hidden or inputfield is blank
 		flipper = true															// Game state ends
@@ -118,15 +115,10 @@ resetButton.addEventListener('click', function(e) {
 			document.querySelectorAll('.alphabet')[i].style.background = '#39ff14'
 			document.querySelectorAll('.alphabet')[i].style.color = 'black'	
 		}
-		// while (remove.hasChildNodes()) {  										// Older version of deletes answer boxes, keeping just in case
-  		//   remove.removeChild(remove.firstChild)
-		// }
 	}
-
 	 document.querySelectorAll('.answers').forEach(function (el) {			// Deletes answer boxes
 	 		el.parentNode.removeChild(el)
 	 })
-
 	document.querySelector('.zero').style.display = 'flex'						// Reset Gallows and counter
 	document.querySelector('.one').style.display = 'none'
 	document.querySelector('.two').style.display = 'none'
@@ -153,19 +145,15 @@ letterButton.addEventListener('click', function(e) {
 	if (flipper == true) {												// Stops letters from being clicked if game has not begun
 		return
 	} 
-
 	if (e.target.style.color == 'rgb(57, 255, 20)' || e.target.style.backgroundColor == 'black') {	 	// Stops already clicked letters from being clicked again
 		return																
 	}
-	
 	countWin = 0														// Wipes countWin every iteration
 	e.target.style.background = 'black'									// Styles letters after being clicked
 	e.target.style.color = '#39ff14'
 	//e.target.style.border = 'solid 1px #39ff14' (this needs work)
-
 	
 	if (dataStored.indexOf(e.target.textContent) >= 0) {				// Checks if a clicked letter is in the answer array
-
 		for (i = 0; i < dataStored.length; i++) {
 			if (dataStored[i] == e.target.textContent) {				// If yes display answer
 				document.querySelectorAll('.answers')[i].value = e.target.textContent
@@ -218,6 +206,10 @@ letterButton.addEventListener('click', function(e) {
 		// document.querySelectorAll('.answers').forEach(function (el) {		// Deletes answer boxes
 		// 	el.parentNode.removeChild(el)
 		// })
+
+		for (i = 0; i< dataStored.length; i++) {
+			document.querySelectorAll('.answers')[i].value = dataStored[i]
+		}
 		
 		for (i = 0; i < document.querySelectorAll('.alphabet').length; i ++) {		// Black out all letters
 			document.querySelectorAll('.alphabet')[i].style.background = 'black'
