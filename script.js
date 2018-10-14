@@ -69,7 +69,7 @@ randomButton.addEventListener('click', function(e) {
 			div.value = dataStored[i]								
 		}
 
-		document.querySelector('.answersGoHere').appendChild(div)	// Appends boxes to where they need to go
+		document.querySelector('.generated').appendChild(div)	// Appends boxes to where they need to go
 	}
 })
 
@@ -96,14 +96,14 @@ inputButton.addEventListener('click', function(e) {
 			div.value = dataStored[i]								
 		}
 
-		document.querySelector('.answersGoHere').appendChild(div)	// Appends boxes to where they need to go
+		document.querySelector('.generated').appendChild(div)	// Appends boxes to where they need to go
 	}
 })
 
 //
 // Reset button
 const resetButton = document.querySelector('.rest')								// The reset button
-const remove = document.querySelector('.generatedAnswers')						// Div containing answers
+const remove = document.querySelector('.generated')						// Div containing answers
 
 resetButton.addEventListener('click', function(e) {
 	if (inputField.style.display == 'none' || dataField == '') {				// Only initialize if input field is hidden or inputfield is blank
@@ -206,15 +206,15 @@ letterButton.addEventListener('click', function(e) {
 	
 	// Game over condition
 	if (counter == 8 && countWin == 0) {
-		console.log('hey')
+		console.log('You Lost')
 		document.querySelector('.win').style.display = 'none'	
 		document.querySelector('.seven').style.display = 'none'				// Resets gallows
 		document.querySelector('.eight').style.display = 'flex'
 		document.querySelector('.loser').style.display = 'flex'				// Displays game over
 
-		document.querySelectorAll('.answers').forEach(function (el) {		// Deletes answer boxes
-			el.parentNode.removeChild(el)
-		})
+		// document.querySelectorAll('.answers').forEach(function (el) {		// Deletes answer boxes
+		// 	el.parentNode.removeChild(el)
+		// })
 		
 		for (i = 0; i < document.querySelectorAll('.alphabet').length; i ++) {		// Black out all letters
 			document.querySelectorAll('.alphabet')[i].style.background = 'black'
