@@ -1,13 +1,14 @@
 //
 // Data storage and input
-//
+const words = require('an-array-of-english-words')
+const funWords = words[Math.floor(Math.random() * 274919)]
 var counter = 0														// Gallows status counter
 var flipper = true													// one flippy boi
 var dataStored = []													// Array with input word split into string letters
 const inputField = document.querySelector('.inputField')			// Input field
 const inputButton = document.querySelector('.inputButton')			// Begin button
 var dataField = document.querySelector('.data').value				// Value of input field
-//const validAnswers = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '-']		// Could eventually have use
+//const validAnswers = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '-']	
 
 document.querySelector('.y').value = 'Y'							// Values for game over 
 document.querySelector('.o').value = 'O'
@@ -32,7 +33,8 @@ function validateKeyStrokes(val) {									// Passes input from input field
 	return fixedVal													// Sends back fixed input
 }
 
-
+//
+//Start button
 const startButton = document.querySelector('.startButton')
 startButton.addEventListener('click', function(e) {
 	e.preventDefault()
@@ -40,22 +42,23 @@ startButton.addEventListener('click', function(e) {
 	document.querySelector('.invisible').style.display = 'block'
 })
 
-
 //
-// Begin button
-//
-inputButton.addEventListener('click', function(e) {
-
+//Random button
+const randomButton = document.querySelector('.randomButton')
+randomButton.addEventListener('click', function(e) {
 	e.preventDefault()
-	var dataField = document.querySelector('.data').value 			// Value of input field
+	var dataField = words[Math.floor(Math.random() * 274919)]
+	console.log(dataField)
+
 
 	if (dataField == '') {											// Rejects empty field
 		return
 	} else { 
 		flipper = false												// Game state begins
 		inputField.style.display = 'none'							// Hides input field + begin button
-		dataStored = dataField.split('')							// Splits value of input field into seperate strings and sends to array
+		dataStored = dataField.toUpperCase().split('')							// Splits value of input field into seperate strings and sends to array
 		document.querySelector('.data').value = ''					// Clears input field
+		console.log(dataField)
 	}
 
 	for (i =0; i < dataStored.length; i++) {						// Creates letter boxes = length of input field value
@@ -71,8 +74,34 @@ inputButton.addEventListener('click', function(e) {
 })
 
 //
-// Reset button
+// Begin button
+inputButton.addEventListener('click', function(e) {
+	e.preventDefault()
+	var dataField = document.querySelector('.data').value 			// Value of input field
+
+	if (dataField == '') {											// Rejects empty field
+		return
+	} else { 
+		flipper = false												// Game state begins
+		inputField.style.display = 'none'							// Hides input field + begin button
+		dataStored = dataField.toUpperCase().split('')				// Splits value of input field into seperate strings and sends to array
+		document.querySelector('.data').value = ''					// Clears input field
+	}
+
+	for (i =0; i < dataStored.length; i++) {						// Creates letter boxes = length of input field value
+		var div = document.createElement('input')					// Creates box
+		div.classList.add('answers')								// Assigns class
+		if (dataStored[i] == " " || dataStored[i] == "-" || dataStored[i] == "'") {		// If an input is a space or dash, create a black bottom box and fill it with the space or dash
+			div.style.border = 'solid 2px black'					
+			div.value = dataStored[i]								
+		}
+
+		document.querySelector('.answersGoHere').appendChild(div)	// Appends boxes to where they need to go
+	}
+})
+
 //
+// Reset button
 const resetButton = document.querySelector('.rest')								// The reset button
 const remove = document.querySelector('.generatedAnswers')						// Div containing answers
 
@@ -111,7 +140,6 @@ resetButton.addEventListener('click', function(e) {
 
 //
 // Letter buttons
-//
 const letterButton = document.querySelector('.letters')	// Wrapper for letter buttons
 letterButton.style.backgroundColor = "black"
 var countWin = 0														// Counter for win state	

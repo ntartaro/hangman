@@ -34,14 +34,16 @@
  | | | | (_| | | | | (_| | | | | | | (_| | | | |     
  |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_| 
                       _/ | 
-                    |___/             
+                    |___/     
+                   
+                    
 </pre>
 </h3>  
 </div>
 
 
 <div class="startWrapper">
-    <button class="startButton">START</button>
+    <button class="startButton"><p class="glowLetters">START</p></button>
 </div>
 
 <div class="invisible">
@@ -209,8 +211,9 @@
 
 	<div class="beginWrapper">
 		<form class="inputField">
-		    <input class="data" type="text" autofocus onkeyup="this.value = validateKeyStrokes(this.value)">
-		    <button class="inputButton">BEGIN</button>
+		    <input class="data" type="text" onkeyup="this.value = validateKeyStrokes(this.value)" />
+            <button class="inputButton"><p class="glowLetters">BEGIN</p></button>
+            <button class="randomButton"><p class="glowLetters">RANDOM</p></button>
         </form>
     </div>
 
@@ -244,11 +247,11 @@
 	</section>
 
 	<section class="reset">
-		<button class="rest">RESET</button>
+		<button class="rest"><p class="glowLetters">RESET</p></button>
 	</section>
 </div>
-<script type="text/javascript" src="script.js">
-</script>
+
+<script src="bundle.js"></script>
 </body>
 </html>
 
