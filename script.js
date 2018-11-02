@@ -234,3 +234,32 @@ letterButton.addEventListener('click', function(e) {
 		}
 	}
 })
+
+
+const getButton = document.querySelector('.get-button');
+
+
+getButton.addEventListener('click', function(e) {
+	e.preventDefault();
+	console.log('clicked')
+	fetch('https://od-api.oxforddictionaries.com/api/v1/entries/en/nick', {
+		headers:{
+			app_id: '716a1b5e',
+			app_key: '8dbd84f4996ac91b9ede09e74d924e1d'
+		}
+	}).then(response => {
+		console.log(response)
+		response.json().then(json => {
+		  let data = json; 
+		  console.log(data)
+		});
+	  });
+})
+
+
+
+// 	fetch('api/projects').then(response => {
+// 	response.json().then(json => {
+// 	  let data = json; 
+// 	});
+//   });

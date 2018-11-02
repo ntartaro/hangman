@@ -52,6 +52,23 @@ randomButton.addEventListener('click', function(e) {
 	e.preventDefault()
 	var dataField = words[Math.floor(Math.random() * 274919)]
 
+	fetch(`https://cors-anywhere.herokuapp.com/https://od-api.oxforddictionaries.com/api/v1/entries/en/${dataField}`, {
+		headers:{
+			app_id: '716a1b5e',
+			app_key: '8dbd84f4996ac91b9ede09e74d924e1d'
+		}
+	}).then(response => {
+		console.log(response.status)
+		// if(response.status == 404) {
+		// 	return
+		// }
+		response.json().then(json => {
+		  let data = json; 
+		  console.log(data)
+		  console.log(data.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0])
+		});
+	  });
+
 	if (dataField == '') {											// Rejects empty field
 		return
 	} else { 
@@ -62,6 +79,15 @@ randomButton.addEventListener('click', function(e) {
 		console.log(dataField)
 		console.log(dataStored)
 	}
+
+	//   fetch(`https://cors-escape.herokuapp.com/https://owlbot.info/api/v2/dictionary/${dataField}`).then(response => {
+	// 	console.log(response)
+	// 	response.json().then(json => {
+	// 	  let data = json; 
+	// 	  console.log(data[0].definition)
+	// 	});
+	//   });
+
 
 	for (i =0; i < dataStored.length; i++) {						// Creates letter boxes = length of input field value
 		var div = document.createElement('input')					// Creates box
