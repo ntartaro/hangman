@@ -159,108 +159,136 @@ resetButton.addEventListener('click', function(e) {
 	counter = 0
 })
 
-//
-// Letter buttons
-const letterButton = document.querySelector('.letters')	// Wrapper for letter buttons
-letterButton.style.backgroundColor = "black"
-var countWin = 0														// Counter for win state	
-
+// -------- Letter buttons -------- //
+const letterButton = document.querySelector('.letters'); // Wrapper for letter buttons
+letterButton.style.backgroundColor = 'black';
+var countWin = 0; // Counter for win state
 letterButton.addEventListener('click', function(e) {
-	e.preventDefault()
+  e.preventDefault();
+  function LetterChecker() {
+    // Stops letters from being clicked if game has not begun
+    if (flipper == true) {
+      return;
+    }
+    // Stops already clicked letters from being clicked again
+    if (
+      e.target.style.color == 'rgb(57, 255, 20)' ||
+      e.target.style.backgroundColor == 'black'
+    ) {
+      return;
+    }
+    SuccessfulLetterClick();
+  }
 
-	if (flipper == true) {												// Stops letters from being clicked if game has not begun
-		return
-	} 
-	if (e.target.style.color == 'rgb(57, 255, 20)' || e.target.style.backgroundColor == 'black') {	 	// Stops already clicked letters from being clicked again
-		return																
-	}
-	countWin = 0														// Wipes countWin every iteration
-	e.target.style.background = 'black'									// Styles letters after being clicked
-	e.target.style.color = '#39ff14'
-	//e.target.style.border = 'solid 1px #39ff14' (this needs work)
-	
-	if (dataStored.indexOf(e.target.textContent) >= 0) {				// Checks if a clicked letter is in the answer array
-		for (i = 0; i < dataStored.length; i++) {
-			if (dataStored[i] == e.target.textContent) {				// If yes display answer
-				document.querySelectorAll('.answers')[i].value = e.target.textContent
-				console.log('SUCCESS')
-					} 
-				} 
-			} else {
-				counter ++												// If no advance gallows counter
-				console.log('FAILURE')
-	}
+  function SuccessfulLetterClick() {
+    // Wipes countWin every iteration
+    countWin = 0;
+    // Styles letters after being clicked
+    e.target.style.background = 'black';
+    e.target.style.color = '#39ff14';
+    // Checks if a clicked letter is in the answer array
+    if (dataStored.indexOf(e.target.textContent) >= 0) {
+      for (i = 0; i < dataStored.length; i++) {
+        if (dataStored[i] == e.target.textContent) {
+          // If yes display answer
+          document.querySelectorAll('.answers')[i].value = e.target.textContent;
+          console.log('SUCCESS');
+        }
+      }
+    } else {
+      // If no advance gallows counter
+      counter++;
+      console.log('FAILURE');
+    }
+    // Adds number of blank spaces left to var countWin
+    document.querySelectorAll('.answers').forEach(function(e) {
+      if (e.value == '') {
+        console.log(countWin);
+        countWin++;
+        return;
+      }
+    });
+    GallowsAdvancer();
+  }
 
-	// Gallows status
-	if (counter == 1) {
-		document.querySelector('.zero').style.display = 'none'
-		document.querySelector('.one').style.display = 'flex'
+  function GallowsAdvancer() {
+    // Gallows status
+    if (counter == 1) {
+      document.querySelector('.zero').style.display = 'none';
+      document.querySelector('.one').style.display = 'flex';
+    }
+    if (counter == 2) {
+      document.querySelector('.one').style.display = 'none';
+      document.querySelector('.two').style.display = 'flex';
+    }
+    if (counter == 3) {
+      document.querySelector('.two').style.display = 'none';
+      document.querySelector('.three').style.display = 'flex';
+    }
+    if (counter == 4) {
+      document.querySelector('.three').style.display = 'none';
+      document.querySelector('.four').style.display = 'flex';
+    }
+    if (counter == 5) {
+      document.querySelector('.four').style.display = 'none';
+      document.querySelector('.five').style.display = 'flex';
+    }
+    if (counter == 6) {
+      document.querySelector('.five').style.display = 'none';
+      document.querySelector('.six').style.display = 'flex';
+    }
+    if (counter == 7) {
+      document.querySelector('.six').style.display = 'none';
+      document.querySelector('.seven').style.display = 'flex';
 	}
-	if (counter == 2) {
-		document.querySelector('.one').style.display = 'none'
-		document.querySelector('.two').style.display = 'flex'
-	}
-	if (counter == 3) {
-		document.querySelector('.two').style.display = 'none'
-		document.querySelector('.three').style.display = 'flex'
-	}
-	if (counter == 4) {
-		document.querySelector('.three').style.display = 'none'
-		document.querySelector('.four').style.display = 'flex'
-	}
-	if (counter == 5) {
-		document.querySelector('.four').style.display = 'none'
-		document.querySelector('.five').style.display = 'flex'
-	}
-	if (counter == 6) {
-		document.querySelector('.five').style.display = 'none'
-		document.querySelector('.six').style.display = 'flex'
-	}	
-	if (counter == 7) {
-		document.querySelector('.six').style.display = 'none'
-		document.querySelector('.seven').style.display = 'flex'
-	}
-	
-	// Game over condition
-	if (counter == 8 && countWin == 0) {
-		console.log('You Lost')
-		document.querySelector('.win').style.display = 'none'	
-		document.querySelector('.seven').style.display = 'none'				// Resets gallows
-		document.querySelector('.eight').style.display = 'flex'
-		document.querySelector('.loser').style.display = 'flex'				// Displays game over
+	console.log(counter)
+    // Game over condition
+    if (counter == 8) {
+      GameLose();
+    }
+    GameWin();
+  }
 
-		// document.querySelectorAll('.answers').forEach(function (el) {		// Deletes answer boxes
-		// 	el.parentNode.removeChild(el)
-		// })
+  function GameLose() {
+    console.log('You Lost');
+    // Resets gallows
+    document.querySelector('.win').style.display = 'none';
+    document.querySelector('.seven').style.display = 'none';
+    document.querySelector('.eight').style.display = 'flex';
+    // Displays game over
+    document.querySelector('.loser').style.display = 'flex';
+    // Displays word after loss
+    for (i = 0; i < dataStored.length; i++) {
+      document.querySelectorAll('.answers')[i].value = dataStored[i];
+    }
+    // Black out all letters
+    for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
+      document.querySelectorAll('.alphabet')[i].style.background = 'black';
+      document.querySelectorAll('.alphabet')[i].style.color = '#39ff14';
+    }
+    return;
+  }
 
-		for (i = 0; i< dataStored.length; i++) {
-			document.querySelectorAll('.answers')[i].value = dataStored[i]
-		}
-		
-		for (i = 0; i < document.querySelectorAll('.alphabet').length; i ++) {		// Black out all letters
-			document.querySelectorAll('.alphabet')[i].style.background = 'black'
-			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
-		} return
-	}
+  function GameWin() {
+    // If there are no spaces left, initiates win condition
+    if (countWin == 0 && counter !== 8) {
+      console.log('You Win');
+      // Hides all gallows
+      var gallowsCount = document.querySelectorAll('.g');
+      for (i = 0; i < gallowsCount.length; i++) {
+        gallowsCount[i].style.display = 'none';
+      }
+      // Displays win page
+      document.querySelector('.win').style.display = 'flex';
+      // Turns all letters off
+      for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
+        document.querySelectorAll('.alphabet')[i].style.color = '#39ff14';
+        document.querySelectorAll('.alphabet')[i].style.background = 'black';
+      }
+    }
+  }
 
-	document.querySelectorAll('.answers').forEach(function (e) {		// Adds number of blank spaces left to var countWin
-		if (e.value == '') {
-			console.log(countWin)
-			countWin ++
-			return	
-		 }
-	})
+  LetterChecker();
+});
 
-	if (countWin == 0 && counter !== 8) {								// If there are no spaces left, initiates win condition
-		var gallowsCount = document.querySelectorAll('.g')
-		for (i = 0; i < gallowsCount.length; i++) {
-			gallowsCount[i].style.display = 'none'
-		}
-		document.querySelector('.win').style.display = 'flex'					
-		for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
-			document.querySelectorAll('.alphabet')[i].style.color = '#39ff14'
-			document.querySelectorAll('.alphabet')[i].style.background = 'black'	
-		}
-	}
-})
 },{"an-array-of-english-words":1}]},{},[2]);
