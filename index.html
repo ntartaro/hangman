@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet"> 
-	<meta charset="utf-8"/>
-	<title>hangman v1.0</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <meta charset="utf-8" />
+    <title>hangman v1.0</title>
 </head>
 
 <body>
-<h3>
-<div class="title1">
-<pre>
+    <h3>
+        <div class="title1">
+            <pre>
     |/|     
     | |     
     |/|     
@@ -24,9 +25,9 @@
   \\___//   
    -----    
 </pre>
-</div>
-<div class="title2">
-<pre>
+        </div>
+        <div class="title2">
+            <pre>
   _                                                  
  | |                                                 
  | |__   __ _ _ __   __ _ _ __ ___   __ _ _ __       
@@ -38,18 +39,20 @@
                    
                     
 </pre>
-</h3>  
-</div>
+    </h3>
+    </div>
 
 
-<div class="startWrapper">
-    <button class="startButton"><p class="glowLetters">START</p></button>
-</div>
+    <div class="startWrapper">
+        <button class="startButton">
+            <p class="glowLetters">START</p>
+        </button>
+    </div>
 
-<div class="invisible">
-	<section class="gallow-wrapper">
-		<div class="gallows">
-<pre class="zero g">
+    <div class="invisible">
+        <section class="gallow-wrapper">
+            <div class="gallows">
+                <pre class="zero g">
    ___________
    || //      
    ||//       
@@ -63,7 +66,7 @@
 ||                ||
 ||                ||
 </pre>
-<pre class="one g">
+                <pre class="one g">
     ___________
     || //     |
     ||//      |
@@ -77,7 +80,7 @@
  ||        \\      ||
  ||  7      \\     ||
 </pre>
-<pre class="two g">
+                <pre class="two g">
     ___________
     || //     |
     ||//      |
@@ -91,7 +94,7 @@
  ||        \\      ||
  ||  6      \\     ||
 </pre>
-<pre class="three g">
+                <pre class="three g">
     ___________
     || //     |
     ||//      |
@@ -105,7 +108,7 @@
  ||        \\      ||
  ||  5      \\     ||
 </pre>
-<pre class="four g">
+                <pre class="four g">
     ___________
     || //     |
     ||//      |
@@ -119,7 +122,7 @@
  ||        \\      ||
  ||  4      \\     ||
 </pre>
-<pre class="five g">
+                <pre class="five g">
     ___________
     || //     |
     ||//      |
@@ -133,7 +136,7 @@
  ||        \\      ||
  ||  3      \\     ||
 </pre>
-<pre class="six g">
+                <pre class="six g">
     ___________
     || //     |
     ||//      |
@@ -147,7 +150,7 @@
  ||        \\      ||
  ||  2      \\     ||
 </pre>
-<pre class="seven g">
+                <pre class="seven g">
     ___________
     || //     |
     ||//      |
@@ -161,7 +164,7 @@
  ||        \\      ||
  ||  1      \\     ||
 </pre>
-<pre class="eight g">
+                <pre class="eight g">
     ___________
     || //     |
     ||//      |
@@ -175,7 +178,7 @@
  ||        \\      ||
  ||         \\     ||
 </pre>
-<pre class="win">
+                <pre class="win">
     ___________
     || //     
     ||//      
@@ -189,69 +192,76 @@
  ||     YOU WIN   ||
  ||  (ノ°□°)ノ┻┻  ||
 </pre>
-</div>
-</section> 
+            </div>
+        </section>
 
-	<section class="answersGoHere"> 
-		<div class="loser">
-			<input class="lost y" type="text">
-			<input class="lost o" type="text">
-			<input class="lost u" type="text">
-			<input class="lost lose" type="text">
-			<input class="lost l" type="text">
-			<input class="lost otwo" type="text">
-			<input class="lost s" type="text">
-			<input class="lost e" type="text">
-        </div>
-    </section>
-    <div class="generated">
+        <section class="answersGoHere">
+            <div class="loser">
+                <input class="lost y" type="text">
+                <input class="lost o" type="text">
+                <input class="lost u" type="text">
+                <input class="lost lose" type="text">
+                <input class="lost l" type="text">
+                <input class="lost otwo" type="text">
+                <input class="lost s" type="text">
+                <input class="lost e" type="text">
+            </div>
+        </section>
+        <div class="generated">
             <!-- <input class="answers" type="text"> -->
-</div>
+        </div>
 
-	<div class="beginWrapper">
-		<form class="inputField">
-		    <input class="data" type="text" onkeyup="this.value = validateKeyStrokes(this.value)" />
-            <button class="inputButton"><p class="glowLetters">BEGIN</p></button>
-            <button class="randomButton"><p class="glowLetters">RANDOM</p></button>
-        </form>
+        <div class="beginWrapper">
+            <form class="inputField">
+                <input class="data" type="text" onkeyup="this.value = validateKeyStrokes(this.value)" />
+                <button class="inputButton">
+                    <p class="glowLetters">BEGIN</p>
+                </button>
+                <button class="randomButton">
+                    <p class="glowLetters">RANDOM</p>
+                </button>
+            </form>
+        </div>
+
+        <section class="letters">
+            <div class="alphabet">A</div>
+            <div class="alphabet">B</div>
+            <div class="alphabet">C</div>
+            <div class="alphabet">D</div>
+            <div class="alphabet">E</div>
+            <div class="alphabet">F</div>
+            <div class="alphabet">G</div>
+            <div class="alphabet">H</div>
+            <div class="alphabet">I</div>
+            <div class="alphabet">J</div>
+            <div class="alphabet">K</div>
+            <div class="alphabet">L</div>
+            <div class="alphabet">M</div>
+            <div class="alphabet">N</div>
+            <div class="alphabet">O</div>
+            <div class="alphabet">P</div>
+            <div class="alphabet">Q</div>
+            <div class="alphabet">R</div>
+            <div class="alphabet">S</div>
+            <div class="alphabet">T</div>
+            <div class="alphabet">U</div>
+            <div class="alphabet">V</div>
+            <div class="alphabet">W</div>
+            <div class="alphabet">X</div>
+            <div class="alphabet y">Y</div>
+            <div class="alphabet z">Z</div>
+        </section>
+
+        <section class="reset">
+            <button class="rest">
+                <p class="glowLetters">RESET</p>
+            </button>
+        </section>
     </div>
-
-	<section class="letters">
-		<div class="alphabet">A</div>
-		<div class="alphabet">B</div>
-		<div class="alphabet">C</div>
-		<div class="alphabet">D</div>
-		<div class="alphabet">E</div>
-		<div class="alphabet">F</div>
-		<div class="alphabet">G</div>
-		<div class="alphabet">H</div>
-		<div class="alphabet">I</div>
-		<div class="alphabet">J</div>
-		<div class="alphabet">K</div>
-		<div class="alphabet">L</div>
-		<div class="alphabet">M</div>
-		<div class="alphabet">N</div>
-		<div class="alphabet">O</div>
-		<div class="alphabet">P</div>
-		<div class="alphabet">Q</div>
-		<div class="alphabet">R</div>
-		<div class="alphabet">S</div>
-		<div class="alphabet">T</div>
-		<div class="alphabet">U</div>
-		<div class="alphabet">V</div>
-		<div class="alphabet">W</div>
-		<div class="alphabet">X</div>
-		<div class="alphabet y">Y</div>
-		<div class="alphabet z">Z</div>
-	</section>
-
-	<section class="reset">
-		<button class="rest"><p class="glowLetters">RESET</p></button>
-	</section>
-</div>
-<script src="bundle.js">
-</script>
+    <script src="bundle.js">
+    </script>
 </body>
+
 </html>
 
 
@@ -259,7 +269,7 @@
 
 
 
- <!-- <pre>                                                           
+<!-- <pre>                                                           
     |/|                                                         
     | |                                                         
     |/|      _                                                  

@@ -1,346 +1,344 @@
 body {
-	background-color: black;
-    font-family: 'VT323', monospace;
+  background-color: black;
+  font-family: 'VT323', monospace;
 }
 .glowLetters {
-	text-shadow: 0px 0px 22px #39ff14, 0px 0px 8px #39ff14;
-	margin: 0;
+  text-shadow: 0px 0px 22px #39ff14, 0px 0px 8px #39ff14;
+  margin: 0;
 }
 
 /*-------- Hangman Title --------*/
 h3 {
-	margin-top: -22px;
-	padding-left: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #39ff14;
+  margin-top: -22px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #39ff14;
 }
 
 .title1 {
-	text-shadow: 1px 1px 30px #39ff14, 3px 3px 40px #39ff14;
-	animation: slidedown 2.5s linear;
+  text-shadow: 1px 1px 30px #39ff14, 3px 3px 40px #39ff14;
+  animation: slidedown 2.5s linear;
 }
 
 .title2 {
-	text-shadow: 1px 1px 30px #39ff14, 3px 3px 40px #39ff14;
-	margin-top: -325px;
-	animation: slidedown 1.5s linear forwards 2.65s;
+  text-shadow: 1px 1px 30px #39ff14, 3px 3px 40px #39ff14;
+  margin-top: -325px;
+  animation: slidedown 1.5s linear forwards 2.65s;
 }
 
 .invisible {
-	display: none;
-	opacity: 0;
-	animation: opacity 2.5s linear forwards;
+  display: none;
+  opacity: 0;
+  animation: opacity 2.5s linear forwards;
 }
 
 .gallow-wrapper {
-	margin-top: -25px;
-	margin-bottom: 15px;
+  margin-top: -25px;
+  margin-bottom: 15px;
 }
 
 .startWrapper {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
-	opacity: 0; 
-	animation: opacity 2s linear forwards 4.5s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  opacity: 0;
+  animation: opacity 2s linear forwards 4.5s;
 }
 
 .startButton {
-	box-shadow: 0px 0px 9px #39ff14;
-	font-size: 45px;
-	font-family: 'VT323', monospace;
-	width: 270px;
-	height: 70px;
-	text-align: center;
-	color: #39ff14;
-	background: black;
-	border-radius: 5px;
-	border: solid 1px #39ff14;
+  box-shadow: 0px 0px 9px #39ff14;
+  font-size: 45px;
+  font-family: 'VT323', monospace;
+  width: 270px;
+  height: 70px;
+  text-align: center;
+  color: #39ff14;
+  background: black;
+  border-radius: 5px;
+  border: solid 1px #39ff14;
 }
 
 /*-------- Gallows --------*/
 .gallows {
-	color: #39ff14;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  color: #39ff14;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .g {
-	text-shadow: 1px 1px 30px #39ff14, 0px 0px 3px #39ff14;
+  text-shadow: 1px 1px 30px #39ff14, 0px 0px 3px #39ff14;
 }
 .one {
-	display: none;
+  display: none;
 }
 .two {
-	display: none;
+  display: none;
 }
 .three {
-	display: none;
+  display: none;
 }
 .four {
-	display: none;
+  display: none;
 }
 .five {
-	display: none;
+  display: none;
 }
 .six {
-	display: none;
+  display: none;
 }
 .seven {
-	display: none;
+  display: none;
 }
 .eight {
-	display: none;
+  display: none;
 }
 .win {
-	display: none;
+  display: none;
 }
 
 /*Wrapper for letters created by input*/
 .answersGoHere {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .generated {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*Letters created by input field*/
 .answers {
-	font-size: 20px;
-	font-family: 'VT323', monospace;
-	text-align: center;
-	background: black;
-	border-top: black;
-	border-right: black;
-	border-left: black;
-	border-bottom: solid #39ff14 2px;
-	color: #39ff14;
-	width: 10px;
-	margin: 10px;
+  font-size: 20px;
+  font-family: 'VT323', monospace;
+  text-align: center;
+  background: black;
+  border-top: black;
+  border-right: black;
+  border-left: black;
+  border-bottom: solid #39ff14 2px;
+  color: #39ff14;
+  width: 10px;
+  margin: 10px;
 }
 
 .loser {
-	display: none;
+  display: none;
 }
 
 .lost {
-	font-size: 20px;
-	font-family: 'VT323', monospace;
-	text-align: center;
-	background: black;
-	border-top: black;
-	border-right: black;
-	border-left: black;
-	border-bottom: solid #39ff14 2px;
-	color: #39ff14;
-	width: 10px;
-	margin: 10px;
+  font-size: 20px;
+  font-family: 'VT323', monospace;
+  text-align: center;
+  background: black;
+  border-top: black;
+  border-right: black;
+  border-left: black;
+  border-bottom: solid #39ff14 2px;
+  color: #39ff14;
+  width: 10px;
+  margin: 10px;
 }
 
 .lose {
- border-bottom: solid 2px black;
+  border-bottom: solid 2px black;
 }
 
 /*Wrapper for input field + begin button*/
 .beginWrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin-top: 10px;
-	margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-.inputField{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+.inputField {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /*Input field*/
 .data {
-	font-size: 20px;
-	font-family: 'VT323', monospace;
-	background: black;
-	border-top: black;
-	border-right: black;
-	border-left: black;
-	border-bottom: 2px solid #39ff14;
-	color: #39ff14;
-	width: 157px;
-
+  font-size: 20px;
+  font-family: 'VT323', monospace;
+  background: black;
+  border-top: black;
+  border-right: black;
+  border-left: black;
+  border-bottom: 2px solid #39ff14;
+  color: #39ff14;
+  width: 157px;
 }
 
 /*Begin button*/
 .inputButton {
-	box-shadow:0px 0px 6px #39ff14;
-	margin-top: 15px;
-	font-size: 17px;
-	font-family: 'VT323', monospace;
-	width: 70px;
-	height: 25px;
-	text-align: center;
-	color: #39ff14;
-	background: black;
-	border-radius: 5px;
-	border: solid 1px #39ff14;
+  box-shadow: 0px 0px 6px #39ff14;
+  margin-top: 15px;
+  font-size: 17px;
+  font-family: 'VT323', monospace;
+  width: 70px;
+  height: 25px;
+  text-align: center;
+  color: #39ff14;
+  background: black;
+  border-radius: 5px;
+  border: solid 1px #39ff14;
 }
 
-
 .randomButton {
-	box-shadow:0px 0px 6px #39ff14;
-	margin-top: 15px;
-	font-size: 17px;
-	font-family: 'VT323', monospace;
-	width: 70px;
-	height: 25px;
-	text-align: center;
-	color: #39ff14;
-	background: black;
-	border-radius: 5px;
-	border: solid 1px #39ff14;
+  box-shadow: 0px 0px 6px #39ff14;
+  margin-top: 15px;
+  font-size: 17px;
+  font-family: 'VT323', monospace;
+  width: 70px;
+  height: 25px;
+  text-align: center;
+  color: #39ff14;
+  background: black;
+  border-radius: 5px;
+  border: solid 1px #39ff14;
 }
 
 /*Wrapper for reset button*/
 .reset {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
 }
 
 /*Reset button*/
 .rest {
-	box-shadow:0px 0px 6px #39ff14;
-	margin-top: 10px;
-	font-size: 15px;
-	font-family: 'VT323', monospace;
-	height: 25px;
-	color: #39ff14;
-	background: black;
-	border-radius: 5px;
-	border: solid 1px #39ff14;
+  box-shadow: 0px 0px 6px #39ff14;
+  margin-top: 10px;
+  font-size: 15px;
+  font-family: 'VT323', monospace;
+  height: 25px;
+  color: #39ff14;
+  background: black;
+  border-radius: 5px;
+  border: solid 1px #39ff14;
 }
 
 /*Wrapper for letter buttons*/
 .letters {
-	box-shadow: 0px 0px 8px #39ff14;
-	border-radius: 6px;
-	padding: 8px 0px 8px 0px;
-	border: solid 2px #39ff14;
-	display: grid;
-	grid-gap: 10px;
-	max-width: 200px;
-	margin:	auto;
-	align-items: center;
-	justify-content: center;
-	grid-template-areas: 
-	"d d d d d d"
-	"d d d d d d"
-	"d d d d d d"
-	"d d d d d d"
-	"d d d d d d";
+  box-shadow: 0px 0px 8px #39ff14;
+  border-radius: 6px;
+  padding: 8px 0px 8px 0px;
+  border: solid 2px #39ff14;
+  display: grid;
+  grid-gap: 10px;
+  max-width: 200px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  grid-template-areas:
+    'd d d d d d'
+    'd d d d d d'
+    'd d d d d d'
+    'd d d d d d'
+    'd d d d d d';
 }
 
 /*Clickable letter buttons*/
 .alphabet {
-	justify-content: center;
-	align-items: center;
-	display: grid;
-	grid-area: "d";
-	text-align: center;
-	border-radius: 7px;
-	background-color: #39ff14;
-	color: black;
-	width: 18px;
-	height: 18px;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-area: 'd';
+  text-align: center;
+  border-radius: 7px;
+  background-color: #39ff14;
+  color: black;
+  width: 18px;
+  height: 18px;
 }
 
 .y {
-	grid-column-start: 3;
-	grid-column-end: 4;
+  grid-column-start: 3;
+  grid-column-end: 4;
 }
 .z {
-	grid-column-start: 4;
-	grid-column-end: 5;
+  grid-column-start: 4;
+  grid-column-end: 5;
 }
 
 /*-------- Mobile sizing --------*/
 @media screen and (max-width: 640px) {
   h3 {
-  	font-size: 7.5px;
+    font-size: 7.5px;
   }
 
   .gallow-wrapper {
-  	font-size: 10px;
+    font-size: 10px;
   }
 
   main {
-  	margin-left: 50px;
+    margin-left: 50px;
   }
   .data {
-  	width: 120px;
+    width: 120px;
   }
 
   .inputButton {
-  	width: 50px;
-  	font-size: 14px;
+    width: 50px;
+    font-size: 14px;
   }
 
   .answersGoHere {
-  	margin-top: -10px;
-  	margin-bottom: -20px;
+    margin-top: -10px;
+    margin-bottom: -20px;
   }
 
   .answers {
-  	width: 8.5px;
-  	height: 8.5px;
-	font-size: 18px;
-	padding: 5px;
+    width: 8.5px;
+    height: 8.5px;
+    font-size: 18px;
+    padding: 5px;
   }
 
   .reset {
-  	margin-top: 3px;
+    margin-top: 3px;
   }
 
   .rest {
-  	font-size: 12px;
+    font-size: 12px;
   }
 
   .alphabet {
-  	height: 16px;
-  	width: 16px;
+    height: 16px;
+    width: 16px;
   }
-} 
+}
 
 @keyframes slidedown {
-	0% {
-		margin-top: -300px;
-	}
-	100% {
-		margin-top: 0px;
-	}
+  0% {
+    margin-top: -300px;
+  }
+  100% {
+    margin-top: 0px;
+  }
 }
 
 @keyframes opacity {
-	0% {
-		opacity:0;
-	}
-/* 
+  0% {
+    opacity: 0;
+  }
+  /* 
 	50% {
 		opacity:0;
 	} */
 
-	100% {
-		opacity:1;
-	}
+  100% {
+    opacity: 1;
+  }
 }
