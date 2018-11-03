@@ -1,16 +1,25 @@
 //
-// Data storage and input
+// -------------------------------- GLOBAL VARIABLES -------------------------------- //
+//
+// Imported word package
 const words = require('an-array-of-english-words');
+// Randomly selected word
 const funWords = words[Math.floor(Math.random() * 274919)];
-var counter = 0; // Gallows status counter
-var flipper = true; // one flippy boi
-var dataStored = []; // Array with input word split into string letters
-const inputField = document.querySelector('.inputField'); // Input field
-const inputButton = document.querySelector('.inputButton'); // Begin button
-var dataField = document.querySelector('.data').value; // Value of input field
-//const validAnswers = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '-']
+// Gallows status counter
+var gallowsCounter = 0;
+// Game state - game not started(true) or game started(false)
+var flipper = true;
+// Array where hangman word is split into letters as strings
+var dataStored = [];
+// Word input field
+const inputField = document.querySelector('.inputField');
+// Value of input field
+var dataField = document.querySelector('.data').value;
+// Begin button
+const inputButton = document.querySelector('.inputButton');
 
-document.querySelector('.y').value = 'Y'; // Values for game over
+// Values for game over
+document.querySelector('.y').value = 'Y';
 document.querySelector('.o').value = 'O';
 document.querySelector('.u').value = 'U';
 document.querySelector('.l').value = 'L';
@@ -18,24 +27,9 @@ document.querySelector('.otwo').value = 'O';
 document.querySelector('.s').value = 'S';
 document.querySelector('.e').value = 'E';
 
-function validateKeyStrokes(val) {
-  // Passes input from input field
-  var fixedVal = val.toUpperCase(); // Forces uppercase
-  fixedVal = fixedVal.replace('1', ''); // Rejects numbers
-  fixedVal = fixedVal.replace('2', '');
-  fixedVal = fixedVal.replace('3', '');
-  fixedVal = fixedVal.replace('4', '');
-  fixedVal = fixedVal.replace('5', '');
-  fixedVal = fixedVal.replace('6', '');
-  fixedVal = fixedVal.replace('7', '');
-  fixedVal = fixedVal.replace('8', '');
-  fixedVal = fixedVal.replace('9', '');
-  fixedVal = fixedVal.replace('0', '');
-  return fixedVal; // Sends back fixed input
-}
-
 //
-//Start button
+// -------------------------------- START BUTTON -------------------------------- //
+//
 const startButton = document.querySelector('.startButton');
 startButton.addEventListener('click', function(e) {
   e.preventDefault();
@@ -44,7 +38,8 @@ startButton.addEventListener('click', function(e) {
 });
 
 //
-//Random button
+// -------------------------------- RANDOM WORD BUTTON -------------------------------- //
+//
 const randomButton = document.querySelector('.randomButton');
 randomButton.addEventListener('click', function(e) {
   e.preventDefault();
@@ -76,7 +71,8 @@ randomButton.addEventListener('click', function(e) {
 });
 
 //
-// Begin button
+// -------------------------------- BEGIN BUTTON -------------------------------- //
+//
 inputButton.addEventListener('click', function(e) {
   e.preventDefault();
   var dataField = document.querySelector('.data').value; // Value of input field
@@ -106,33 +102,34 @@ inputButton.addEventListener('click', function(e) {
 });
 
 //
+// -------------------------------- RESET BUTTON -------------------------------- //
+//
+// Div containing answers
+const remove = document.querySelector('.generated');
 // Reset button
-const resetButton = document.querySelector('.rest'); // The reset button
-const remove = document.querySelector('.generated'); // Div containing answers
+const resetButton = document.querySelector('.rest');
+// Reset button event listener
 resetButton.addEventListener('click', function(e) {
-  function GameOver() {
+  e.preventDefault();
+  ResetClicked();
+
+  function ResetClicked() {
     // Only initialize if input field is hidden or input field is blank
     if (inputField.style.display == 'none' || dataField == '') {
-      // Game state ends
-      flipper = true;
-      // Bring back input field
-      inputField.style.display = '';
-      // Reset answer array
-      dataStored = [];
-      // Resets letter buttons color
-      for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
-        document.querySelectorAll('.alphabet')[i].style.background = '#39ff14';
-        document.querySelectorAll('.alphabet')[i].style.color = 'black';
-      }
+      ResetGameState();
     }
-    RemoveAnswers();
   }
-  function RemoveAnswers() {
-    // Deletes answer boxes
-    document.querySelectorAll('.answers').forEach(function(el) {
-      el.parentNode.removeChild(el);
-    });
-    // Reset Gallows and counter
+
+  function ResetGameState() {
+    // Bring back input field
+    inputField.style.display = '';
+    // Reset gallows counter
+    gallowsCounter = 0;
+    // Set game state to not started
+    flipper = true;
+    // Reset answer array
+    dataStored = [];
+    // Reset gallows display
     document.querySelector('.zero').style.display = 'flex';
     document.querySelector('.one').style.display = 'none';
     document.querySelector('.two').style.display = 'none';
@@ -144,17 +141,35 @@ resetButton.addEventListener('click', function(e) {
     document.querySelector('.eight').style.display = 'none';
     document.querySelector('.loser').style.display = 'none';
     document.querySelector('.win').style.display = 'none';
-    counter = 0;
+    // Reset letter buttons color
+    for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
+      document.querySelectorAll('.alphabet')[i].style.background = '#39ff14';
+      document.querySelectorAll('.alphabet')[i].style.color = 'black';
+    }
+    RemoveAnswers();
   }
-  GameOver();
+
+  function RemoveAnswers() {
+    // Deletes answer boxes
+    document.querySelectorAll('.answers').forEach(function(el) {
+      el.parentNode.removeChild(el);
+    });
+    console.log('Game reset');
+  }
 });
 
-// -------- Letter buttons -------- //
-const letterButton = document.querySelector('.letters'); // Wrapper for letter buttons
+//
+// -------------------------------- LETTER BUTTONS -------------------------------- //
+//
+// Wrapper for letter buttons
+const letterButton = document.querySelector('.letters');
+// Styled to avoid interactivity with letter wrapper, only want letters clickable
 letterButton.style.backgroundColor = 'black';
-var countWin = 0; // Counter for win state
+// Letter button listener
 letterButton.addEventListener('click', function(e) {
   e.preventDefault();
+  LetterChecker();
+
   function LetterChecker() {
     // Stops letters from being clicked if game has not begun
     if (flipper == true) {
@@ -171,7 +186,7 @@ letterButton.addEventListener('click', function(e) {
   }
 
   function SuccessfulLetterClick() {
-    // Wipes countWin every iteration
+    // Wipes counter for win state every iteration
     countWin = 0;
     // Styles letters after being clicked
     e.target.style.background = 'black';
@@ -182,18 +197,17 @@ letterButton.addEventListener('click', function(e) {
         if (dataStored[i] == e.target.textContent) {
           // If yes display answer
           document.querySelectorAll('.answers')[i].value = e.target.textContent;
-          console.log('SUCCESS');
+          console.log('Correct guess');
         }
       }
     } else {
       // If no advance gallows counter
-      counter++;
-      console.log('FAILURE');
+      gallowsCounter++;
+      console.log('Bad guess');
     }
     // Adds number of blank spaces left to var countWin
     document.querySelectorAll('.answers').forEach(function(e) {
       if (e.value == '') {
-        console.log(countWin);
         countWin++;
         return;
       }
@@ -203,43 +217,46 @@ letterButton.addEventListener('click', function(e) {
 
   function GallowsAdvancer() {
     // Gallows status
-    if (counter == 1) {
+    if (gallowsCounter == 1) {
       document.querySelector('.zero').style.display = 'none';
       document.querySelector('.one').style.display = 'flex';
     }
-    if (counter == 2) {
+    if (gallowsCounter == 2) {
       document.querySelector('.one').style.display = 'none';
       document.querySelector('.two').style.display = 'flex';
     }
-    if (counter == 3) {
+    if (gallowsCounter == 3) {
       document.querySelector('.two').style.display = 'none';
       document.querySelector('.three').style.display = 'flex';
     }
-    if (counter == 4) {
+    if (gallowsCounter == 4) {
       document.querySelector('.three').style.display = 'none';
       document.querySelector('.four').style.display = 'flex';
     }
-    if (counter == 5) {
+    if (gallowsCounter == 5) {
       document.querySelector('.four').style.display = 'none';
       document.querySelector('.five').style.display = 'flex';
     }
-    if (counter == 6) {
+    if (gallowsCounter == 6) {
       document.querySelector('.five').style.display = 'none';
       document.querySelector('.six').style.display = 'flex';
     }
-    if (counter == 7) {
+    if (gallowsCounter == 7) {
       document.querySelector('.six').style.display = 'none';
       document.querySelector('.seven').style.display = 'flex';
     }
     // Game over condition
-    if (counter == 8 && countWin == 0) {
+    if (gallowsCounter == 8) {
       GameLose();
     }
-    GameWin();
+    // Game win condition
+    if (countWin == 0 && gallowsCounter !== 8) {
+      GameWin();
+    }
   }
 
   function GameLose() {
-    console.log('You Lost');
+    console.log('You Lose');
     // Resets gallows
     document.querySelector('.win').style.display = 'none';
     document.querySelector('.seven').style.display = 'none';
@@ -255,27 +272,39 @@ letterButton.addEventListener('click', function(e) {
       document.querySelectorAll('.alphabet')[i].style.background = 'black';
       document.querySelectorAll('.alphabet')[i].style.color = '#39ff14';
     }
-    return;
   }
 
   function GameWin() {
     // If there are no spaces left, initiates win condition
-    if (countWin == 0 && counter !== 8) {
-      console.log('You Win');
-      // Hides all gallows
-      var gallowsCount = document.querySelectorAll('.g');
-      for (i = 0; i < gallowsCount.length; i++) {
-        gallowsCount[i].style.display = 'none';
-      }
-      // Displays win page
-      document.querySelector('.win').style.display = 'flex';
-      // Turns all letters off
-      for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
-        document.querySelectorAll('.alphabet')[i].style.color = '#39ff14';
-        document.querySelectorAll('.alphabet')[i].style.background = 'black';
-      }
+    console.log('You Win');
+    // Hides all gallows
+    var gallowsCount = document.querySelectorAll('.g');
+    for (i = 0; i < gallowsCount.length; i++) {
+      gallowsCount[i].style.display = 'none';
+    }
+    // Displays win page
+    document.querySelector('.win').style.display = 'flex';
+    // Turns all letters off
+    for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
+      document.querySelectorAll('.alphabet')[i].style.color = '#39ff14';
+      document.querySelectorAll('.alphabet')[i].style.background = 'black';
     }
   }
-
-  LetterChecker();
 });
+
+// Old code
+
+// function validateKeyStrokes(val) {									// Passes input from input field
+// 	var fixedVal = val.toUpperCase()								// Forces uppercase
+// 	fixedVal = fixedVal.replace('1', '')							// Rejects numbers
+// 	fixedVal = fixedVal.replace('2', '')
+// 	fixedVal = fixedVal.replace('3', '')
+// 	fixedVal = fixedVal.replace('4', '')
+// 	fixedVal = fixedVal.replace('5', '')
+// 	fixedVal = fixedVal.replace('6', '')
+// 	fixedVal = fixedVal.replace('7', '')
+// 	fixedVal = fixedVal.replace('8', '')
+// 	fixedVal = fixedVal.replace('9', '')
+// 	fixedVal = fixedVal.replace('0', '')
+// 	return fixedVal													// Sends back fixed input
+// }
