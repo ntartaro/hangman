@@ -2,12 +2,12 @@ body {
   background-color: black;
   font-family: 'VT323', monospace;
 }
-.glowLetters {
+.glow-letters {
   text-shadow: 0px 0px 22px #39ff14, 0px 0px 8px #39ff14;
   margin: 0;
 }
 
-/*-------- Hangman Title --------*/
+/*------------ Hangman Title ------------*/
 h3 {
   margin-top: -22px;
   padding-left: 10px;
@@ -17,29 +17,18 @@ h3 {
   color: #39ff14;
 }
 
-.title1 {
+.title-noose {
   text-shadow: 1px 1px 30px #39ff14, 3px 3px 40px #39ff14;
   animation: slidedown 2.5s linear;
 }
 
-.title2 {
+.title-hangman {
   text-shadow: 1px 1px 30px #39ff14, 3px 3px 40px #39ff14;
   margin-top: -325px;
   animation: slidedown 1.5s linear forwards 2.65s;
 }
 
-.invisible {
-  display: none;
-  opacity: 0;
-  animation: opacity 2.5s linear forwards;
-}
-
-.gallow-wrapper {
-  margin-top: -25px;
-  margin-bottom: 15px;
-}
-
-.startWrapper {
+.start-button-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -48,7 +37,7 @@ h3 {
   animation: opacity 2s linear forwards 4.5s;
 }
 
-.startButton {
+.start-button {
   box-shadow: 0px 0px 9px #39ff14;
   font-size: 45px;
   font-family: 'VT323', monospace;
@@ -60,8 +49,18 @@ h3 {
   border-radius: 5px;
   border: solid 1px #39ff14;
 }
+.invisible {
+  display: none;
+  opacity: 0;
+  animation: opacity 2.5s linear forwards;
+}
 
-/*-------- Gallows --------*/
+.gallow-wrapper {
+  margin-top: -25px;
+  margin-bottom: 15px;
+}
+
+/*------------ Gallows ------------*/
 .gallows {
   color: #39ff14;
   display: flex;
@@ -71,31 +70,7 @@ h3 {
 .g {
   text-shadow: 1px 1px 30px #39ff14, 0px 0px 3px #39ff14;
 }
-.one {
-  display: none;
-}
-.two {
-  display: none;
-}
-.three {
-  display: none;
-}
-.four {
-  display: none;
-}
-.five {
-  display: none;
-}
-.six {
-  display: none;
-}
-.seven {
-  display: none;
-}
-.eight {
-  display: none;
-}
-.win {
+.one, .two, .three, .four, .five, .six, .seven, .eight, .win {
   display: none;
 }
 
@@ -180,7 +155,7 @@ h3 {
 }
 
 /*Begin button*/
-.inputButton {
+.beginButton {
   box-shadow: 0px 0px 6px #39ff14;
   margin-top: 15px;
   font-size: 17px;

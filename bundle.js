@@ -6,125 +6,118 @@ module.exports=["a","aa","aah","aahed","aahing","aahs","aal","aalii","aaliis","a
 //
 // Imported word package
 const words = require('an-array-of-english-words');
-// Randomly selected word
-const funWords = words[Math.floor(Math.random() * 274919)];
 // Gallows status counter
 var gallowsCounter = 0;
 // Game state - game not started(true) or game started(false)
 var flipper = true;
 // Array where hangman word is split into letters as strings
-var dataStored = [];
+var storedWord = [];
 // Word input field
-const inputField = document.querySelector('.inputField'); 
+const inputField = document.querySelector('.inputField');
 // Value of input field
-var dataField = document.querySelector('.data').value; 
-// Begin button
-const inputButton = document.querySelector('.inputButton'); 
+var dataField = document.querySelector('.data').value;
 
-// Values for game over 
-document.querySelector('.y').value = 'Y'							
-document.querySelector('.o').value = 'O'
-document.querySelector('.u').value = 'U'
-document.querySelector('.l').value = 'L'
-document.querySelector('.otwo').value = 'O'
-document.querySelector('.s').value = 'S'
-document.querySelector('.e').value = 'E'
+// Values for game over
+document.querySelector('.y').value = 'Y';
+document.querySelector('.o').value = 'O';
+document.querySelector('.u').value = 'U';
+document.querySelector('.l').value = 'L';
+document.querySelector('.otwo').value = 'O';
+document.querySelector('.s').value = 'S';
+document.querySelector('.e').value = 'E';
 
 //
-//Start button
-const startButton = document.querySelector('.startButton')
+// -------------------------------- GLOBAL FUNCTIONS -------------------------------- //
+//
+function LetterBoxCreator() {
+  // Creates letter boxes equal to length of input field value
+  for (i = 0; i < storedWord.length; i++) {
+    // Creates box
+    var div = document.createElement('input');
+    // Assigns class
+    div.classList.add('answers');
+    // If an input is a space or dash, create a black bottom box and fill it with the space or dash
+    if (storedWord[i] == ' ' || storedWord[i] == '-' || storedWord[i] == "'") {
+      div.style.border = 'solid 2px black';
+      div.value = storedWord[i];
+    }
+    // Appends boxes to where they need to go
+    document.querySelector('.generated').appendChild(div);
+  }
+}
+
+//
+// -------------------------------- START BUTTON -------------------------------- //
+//
+const startButton = document.querySelector('.start-button');
 startButton.addEventListener('click', function(e) {
-	e.preventDefault()
-	document.querySelector('.startWrapper').style.display = 'none'
-	document.querySelector('.invisible').style.display = 'block'
-})
+  e.preventDefault();
+  document.querySelector('.start-button-wrapper').style.display = 'none';
+  document.querySelector('.invisible').style.display = 'block';
+});
 
 //
-//Random button
-const randomButton = document.querySelector('.randomButton')
+// -------------------------------- RANDOM WORD BUTTON -------------------------------- //
+//
+// Random Button
+const randomButton = document.querySelector('.randomButton');
+// Random button event listener
 randomButton.addEventListener('click', function(e) {
-	e.preventDefault()
-	var dataField = words[Math.floor(Math.random() * 274919)]
+  e.preventDefault();
+  RandomGameStart();
 
-	// fetch(`https://cors-anywhere.herokuapp.com/https://od-api.oxforddictionaries.com/api/v1/entries/en/${dataField}`, {
-	// 	headers:{
-	// 		app_id: '716a1b5e',
-	// 		app_key: '8dbd84f4996ac91b9ede09e74d924e1d'
-	// 	}
-	// }).then(response => {
-	// 	console.log(response.status)
-	// 	// if(response.status == 404) {
-	// 	// 	return
-	// 	// }
-	// 	response.json().then(json => {
-	// 	  let data = json; 
-	// 	  console.log(data)
-	// 	  console.log(data.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0])
-	// 	});
-	//   });
+  function RandomGameStart() {
+    // Game state begins
+    flipper = false;
+    // Hides input field + begin button
+    inputField.style.display = 'none';
+    // Clears input field
+    document.querySelector('.data').value = '';
+    // Selects random word
+    var randomWord = words[Math.floor(Math.random() * 274919)];
+    // Splits random word into seperate strings and sends to array
+    storedWord = randomWord.toUpperCase().split('');
+    console.log(randomWord);
+    console.log(storedWord);
+    LetterBoxCreator();
+  }
+});
 
-	if (dataField == '') {											// Rejects empty field
-		return
-	} else { 
-		flipper = false												// Game state begins
-		inputField.style.display = 'none'							// Hides input field + begin button
-		dataStored = dataField.toUpperCase().split('')							// Splits value of input field into seperate strings and sends to array
-		document.querySelector('.data').value = ''					// Clears input field
-		console.log(dataField)
-		console.log(dataStored)
-	}
-
-	  fetch(`https://cors-escape.herokuapp.com/https://owlbot.info/api/v2/dictionary/${dataField}`).then(response => {
-		console.log(response)
-		response.json().then(json => {
-		  let data = json; 
-		  console.log(data[0].definition)
-		});
-	  });
-
-
-	for (i =0; i < dataStored.length; i++) {						// Creates letter boxes = length of input field value
-		var div = document.createElement('input')					// Creates box
-		div.classList.add('answers')								// Assigns class
-		if (dataStored[i] == " " || dataStored[i] == "-" || dataStored[i] == "'") {			// If an input is a space or dash, create a black bottom box and fill it with the space or dash
-			div.style.border = 'solid 2px black'					
-			div.value = dataStored[i]								
-		}
-		document.querySelector('.generated').appendChild(div)	// Appends boxes to where they need to go
-	}
-})
-
+//
+// -------------------------------- BEGIN BUTTON -------------------------------- //
 //
 // Begin button
-inputButton.addEventListener('click', function(e) {
-	e.preventDefault()
-	var dataField = document.querySelector('.data').value 			// Value of input field
+const beginButton = document.querySelector('.beginButton');
+// Begin button event listener
+beginButton.addEventListener('click', function(e) {
+  e.preventDefault();
+  NormalGameStart();
 
-	if (dataField == '') {											// Rejects empty field
-		return
-	} else { 
-		flipper = false												// Game state begins
-		inputField.style.display = 'none'							// Hides input field + begin button
-		dataStored = dataField.toUpperCase().split('')				// Splits value of input field into seperate strings and sends to array
-		document.querySelector('.data').value = ''					// Clears input field
-	}
+  function NormalGameStart() {
+    // Takes user word input
+    var userWord = document.querySelector('.data').value;
+    // Rejects empty field
+    if (userWord == '') {
+      return;
+    } else {
+      // Game state begins
+      flipper = false;
+      // Hides input field + begin button
+      inputField.style.display = 'none';
+      // Splits user word into seperate strings and sends to array
+      storedWord = userWord.toUpperCase().split('');
+      // Clears input field
+      document.querySelector('.data').value = '';
+      console.log(userWord);
+      console.log(storedWord);
+      LetterBoxCreator();
+    }
+  }
+});
 
-	for (i =0; i < dataStored.length; i++) {						// Creates letter boxes = length of input field value
-		var div = document.createElement('input')					// Creates box
-		div.classList.add('answers')								// Assigns class
-		if (dataStored[i] == " " || dataStored[i] == "-" || dataStored[i] == "'") {		// If an input is a space or dash, create a black bottom box and fill it with the space or dash
-			div.style.border = 'solid 2px black'					
-			div.value = dataStored[i]								
-		}
-
-		document.querySelector('.generated').appendChild(div)	// Appends boxes to where they need to go
-	}
-})
 //
 // -------------------------------- RESET BUTTON -------------------------------- //
 //
-// Div containing answers
-const remove = document.querySelector('.generated');
 // Reset button
 const resetButton = document.querySelector('.rest');
 // Reset button event listener
@@ -147,7 +140,7 @@ resetButton.addEventListener('click', function(e) {
     // Set game state to not started
     flipper = true;
     // Reset answer array
-    dataStored = [];
+    storedWord = [];
     // Reset gallows display
     document.querySelector('.zero').style.display = 'flex';
     document.querySelector('.one').style.display = 'none';
@@ -211,9 +204,9 @@ letterButton.addEventListener('click', function(e) {
     e.target.style.background = 'black';
     e.target.style.color = '#39ff14';
     // Checks if a clicked letter is in the answer array
-    if (dataStored.indexOf(e.target.textContent) >= 0) {
-      for (i = 0; i < dataStored.length; i++) {
-        if (dataStored[i] == e.target.textContent) {
+    if (storedWord.indexOf(e.target.textContent) >= 0) {
+      for (i = 0; i < storedWord.length; i++) {
+        if (storedWord[i] == e.target.textContent) {
           // If yes display answer
           document.querySelectorAll('.answers')[i].value = e.target.textContent;
           console.log('Correct guess');
@@ -283,8 +276,8 @@ letterButton.addEventListener('click', function(e) {
     // Displays game over
     document.querySelector('.loser').style.display = 'flex';
     // Displays word after loss
-    for (i = 0; i < dataStored.length; i++) {
-      document.querySelectorAll('.answers')[i].value = dataStored[i];
+    for (i = 0; i < storedWord.length; i++) {
+      document.querySelectorAll('.answers')[i].value = storedWord[i];
     }
     // Black out all letters
     for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
