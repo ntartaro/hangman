@@ -55,7 +55,7 @@ h3 {
   animation: opacity 2.5s linear forwards;
 }
 
-.gallow-wrapper {
+.gallows-wrapper {
   margin-top: -25px;
   margin-bottom: 15px;
 }
@@ -70,7 +70,15 @@ h3 {
 .g {
   text-shadow: 1px 1px 30px #39ff14, 0px 0px 3px #39ff14;
 }
-.one, .two, .three, .four, .five, .six, .seven, .eight, .win {
+.one,
+.two,
+.three,
+.four,
+.five,
+.six,
+.seven,
+.eight,
+.win {
   display: none;
 }
 
@@ -81,7 +89,7 @@ h3 {
   align-items: center;
 }
 
-.generated {
+.generated-answer-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,20 +133,13 @@ h3 {
 }
 
 /*Wrapper for input field + begin button*/
-.beginWrapper {
+.game-button-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
   margin-bottom: 20px;
-}
-
-.inputField {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 /*Input field*/
@@ -155,7 +156,7 @@ h3 {
 }
 
 /*Begin button*/
-.beginButton {
+.begin-button {
   box-shadow: 0px 0px 6px #39ff14;
   margin-top: 15px;
   font-size: 17px;
@@ -169,7 +170,7 @@ h3 {
   border: solid 1px #39ff14;
 }
 
-.randomButton {
+.random-button {
   box-shadow: 0px 0px 6px #39ff14;
   margin-top: 15px;
   font-size: 17px;
@@ -184,7 +185,7 @@ h3 {
 }
 
 /*Wrapper for reset button*/
-.reset {
+.reset-button-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,7 +193,7 @@ h3 {
 }
 
 /*Reset button*/
-.rest {
+.reset-button {
   box-shadow: 0px 0px 6px #39ff14;
   margin-top: 10px;
   font-size: 15px;
@@ -205,7 +206,7 @@ h3 {
 }
 
 /*Wrapper for letter buttons*/
-.letters {
+.letters-wrapper {
   box-shadow: 0px 0px 8px #39ff14;
   border-radius: 6px;
   padding: 8px 0px 8px 0px;
@@ -225,7 +226,7 @@ h3 {
 }
 
 /*Clickable letter buttons*/
-.alphabet {
+.letter-button {
   justify-content: center;
   align-items: center;
   display: grid;
@@ -252,7 +253,7 @@ h3 {
     font-size: 7.5px;
   }
 
-  .gallow-wrapper {
+  .gallows-wrapper {
     font-size: 10px;
   }
 
@@ -263,7 +264,7 @@ h3 {
     width: 120px;
   }
 
-  .inputButton {
+  .begin-button {
     width: 50px;
     font-size: 14px;
   }
@@ -280,15 +281,15 @@ h3 {
     padding: 5px;
   }
 
-  .reset {
+  .reset-button-wrapper {
     margin-top: 3px;
   }
 
-  .rest {
+  .reset-button {
     font-size: 12px;
   }
 
-  .alphabet {
+  .letter-button {
     height: 16px;
     width: 16px;
   }

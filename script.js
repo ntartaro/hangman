@@ -9,10 +9,24 @@ var gallowsCounter = 0;
 var flipper = true;
 // Array where hangman word is split into letters as strings
 var storedWord = [];
-// Word input field
-const inputField = document.querySelector('.inputField');
+// Game buttons and input field wrapper
+const gameButtonWrapper = document.querySelector('.game-button-wrapper');
 // Value of input field
-var dataField = document.querySelector('.data').value;
+const userWordInput = document.querySelector('.data').value;
+// All letter buttons
+const letterButtons = document.querySelectorAll('.letter-button');
+// Gallows
+const gallowsStart = document.querySelector('.zero');
+const gallowsOne = document.querySelector('.one');
+const gallowsTwo = document.querySelector('.two');
+const gallowsThree = document.querySelector('.three');
+const gallowsFour = document.querySelector('.four');
+const gallowsFive = document.querySelector('.five');
+const gallowsSix = document.querySelector('.six');
+const gallowsSeven = document.querySelector('.seven');
+const gallowsLose = document.querySelector('.eight');
+const gallowsWin = document.querySelector('.win');
+// const gallowsLoser = document.querySelector('.loser')
 
 // Values for game over
 document.querySelector('.y').value = 'Y';
@@ -38,18 +52,27 @@ function LetterBoxCreator() {
       div.style.border = 'solid 2px black';
       div.value = storedWord[i];
     }
-    // Appends boxes to where they need to go
-    document.querySelector('.generated').appendChild(div);
+    // Appends boxes to their designated wrapper area
+    document.querySelector('.generated-answer-wrapper').appendChild(div);
+  }
+}
+
+function LetterColorReset() {
+  for (i = 0; i < letterButtons.length; i++) {
+    // Black out all letters
+    letterButtons[i].style.background = 'black';
+    letterButtons[i].style.color = '#39ff14';
   }
 }
 
 //
 // -------------------------------- START BUTTON -------------------------------- //
 //
-const startButton = document.querySelector('.startButton');
+const startButton = document.querySelector('.start-button');
 startButton.addEventListener('click', function(e) {
   e.preventDefault();
-  document.querySelector('.startWrapper').style.display = 'none';
+  // Hides start button, brings out gallows
+  document.querySelector('.start-button-wrapper').style.display = 'none';
   document.querySelector('.invisible').style.display = 'block';
 });
 
@@ -57,7 +80,7 @@ startButton.addEventListener('click', function(e) {
 // -------------------------------- RANDOM WORD BUTTON -------------------------------- //
 //
 // Random Button
-const randomButton = document.querySelector('.randomButton');
+const randomButton = document.querySelector('.random-button');
 // Random button event listener
 randomButton.addEventListener('click', function(e) {
   e.preventDefault();
@@ -67,9 +90,9 @@ randomButton.addEventListener('click', function(e) {
     // Game state begins
     flipper = false;
     // Hides input field + begin button
-    inputField.style.display = 'none';
+    gameButtonWrapper.style.display = 'none';
     // Clears input field
-    document.querySelector('.data').value = '';
+    userWordInput.value = '';
     // Selects random word
     var randomWord = words[Math.floor(Math.random() * 274919)];
     // Splits random word into seperate strings and sends to array
@@ -84,7 +107,7 @@ randomButton.addEventListener('click', function(e) {
 // -------------------------------- BEGIN BUTTON -------------------------------- //
 //
 // Begin button
-const beginButton = document.querySelector('.beginButton');
+const beginButton = document.querySelector('.begin-button');
 // Begin button event listener
 beginButton.addEventListener('click', function(e) {
   e.preventDefault();
@@ -100,11 +123,11 @@ beginButton.addEventListener('click', function(e) {
       // Game state begins
       flipper = false;
       // Hides input field + begin button
-      inputField.style.display = 'none';
+      gameButtonWrapper.style.display = 'none';
       // Splits user word into seperate strings and sends to array
       storedWord = userWord.toUpperCase().split('');
       // Clears input field
-      document.querySelector('.data').value = '';
+      userWordInput.value = '';
       console.log(userWord);
       console.log(storedWord);
       LetterBoxCreator();
@@ -116,22 +139,17 @@ beginButton.addEventListener('click', function(e) {
 // -------------------------------- RESET BUTTON -------------------------------- //
 //
 // Reset button
-const resetButton = document.querySelector('.rest');
+const resetButton = document.querySelector('.reset-button');
 // Reset button event listener
 resetButton.addEventListener('click', function(e) {
   e.preventDefault();
-  ResetClicked();
-
-  function ResetClicked() {
-    // Only initialize if input field is hidden or input field is blank
-    if (inputField.style.display == 'none' || dataField == '') {
-      ResetGameState();
-    }
-  }
+  ResetGameState();
 
   function ResetGameState() {
     // Bring back input field
-    inputField.style.display = '';
+    gameButtonWrapper.style.display = '';
+    // Reset input field
+    document.querySelector('.data').value = '';
     // Reset gallows counter
     gallowsCounter = 0;
     // Set game state to not started
@@ -139,21 +157,21 @@ resetButton.addEventListener('click', function(e) {
     // Reset answer array
     storedWord = [];
     // Reset gallows display
-    document.querySelector('.zero').style.display = 'flex';
-    document.querySelector('.one').style.display = 'none';
-    document.querySelector('.two').style.display = 'none';
-    document.querySelector('.three').style.display = 'none';
-    document.querySelector('.four').style.display = 'none';
-    document.querySelector('.five').style.display = 'none';
-    document.querySelector('.six').style.display = 'none';
-    document.querySelector('.seven').style.display = 'none';
-    document.querySelector('.eight').style.display = 'none';
+    gallowsStart.style.display = 'flex';
+    gallowsOne.style.display = 'none';
+    gallowsTwo.style.display = 'none';
+    gallowsThree.style.display = 'none';
+    gallowsFour.style.display = 'none';
+    gallowsFive.style.display = 'none';
+    gallowsSix.style.display = 'none';
+    gallowsSeven.style.display = 'none';
+    gallowsLose.style.display = 'none';
     document.querySelector('.loser').style.display = 'none';
-    document.querySelector('.win').style.display = 'none';
+    gallowsWin.style.display = 'none';
     // Reset letter buttons color
-    for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
-      document.querySelectorAll('.alphabet')[i].style.background = '#39ff14';
-      document.querySelectorAll('.alphabet')[i].style.color = 'black';
+    for (i = 0; i < letterButtons.length; i++) {
+      letterButtons[i].style.background = '#39ff14';
+      letterButtons[i].style.color = 'black';
     }
     RemoveAnswers();
   }
@@ -171,7 +189,7 @@ resetButton.addEventListener('click', function(e) {
 // -------------------------------- LETTER BUTTONS -------------------------------- //
 //
 // Wrapper for letter buttons
-const letterButton = document.querySelector('.letters');
+const letterButton = document.querySelector('.letters-wrapper');
 // Styled to avoid interactivity with letter wrapper, only want letters clickable
 letterButton.style.backgroundColor = 'black';
 // Letter button listener
@@ -227,32 +245,32 @@ letterButton.addEventListener('click', function(e) {
   function GallowsAdvancer() {
     // Gallows status
     if (gallowsCounter == 1) {
-      document.querySelector('.zero').style.display = 'none';
-      document.querySelector('.one').style.display = 'flex';
+      gallowsStart.style.display = 'none';
+      gallowsOne.style.display = 'flex';
     }
     if (gallowsCounter == 2) {
-      document.querySelector('.one').style.display = 'none';
-      document.querySelector('.two').style.display = 'flex';
+      gallowsOne.style.display = 'none';
+      gallowsTwo.style.display = 'flex';
     }
     if (gallowsCounter == 3) {
-      document.querySelector('.two').style.display = 'none';
-      document.querySelector('.three').style.display = 'flex';
+      gallowsTwo.style.display = 'none';
+      gallowsThree.style.display = 'flex';
     }
     if (gallowsCounter == 4) {
-      document.querySelector('.three').style.display = 'none';
-      document.querySelector('.four').style.display = 'flex';
+      gallowsThree.style.display = 'none';
+      gallowsFour.style.display = 'flex';
     }
     if (gallowsCounter == 5) {
-      document.querySelector('.four').style.display = 'none';
-      document.querySelector('.five').style.display = 'flex';
+      gallowsFour.style.display = 'none';
+      gallowsFive.style.display = 'flex';
     }
     if (gallowsCounter == 6) {
-      document.querySelector('.five').style.display = 'none';
-      document.querySelector('.six').style.display = 'flex';
+      gallowsFive.style.display = 'none';
+      gallowsSix.style.display = 'flex';
     }
     if (gallowsCounter == 7) {
-      document.querySelector('.six').style.display = 'none';
-      document.querySelector('.seven').style.display = 'flex';
+      gallowsSix.style.display = 'none';
+      gallowsSeven.style.display = 'flex';
     }
     // Game over condition
     if (gallowsCounter == 8) {
@@ -266,21 +284,16 @@ letterButton.addEventListener('click', function(e) {
 
   function GameLose() {
     console.log('You Lose');
-    // Resets gallows
-    document.querySelector('.win').style.display = 'none';
-    document.querySelector('.seven').style.display = 'none';
-    document.querySelector('.eight').style.display = 'flex';
-    // Displays game over
+    // Resets gallows and displays game over
+    gallowsWin.style.display = 'none';
+    gallowsSeven.style.display = 'none';
+    gallowsLose.style.display = 'flex';
     document.querySelector('.loser').style.display = 'flex';
     // Displays word after loss
     for (i = 0; i < storedWord.length; i++) {
       document.querySelectorAll('.answers')[i].value = storedWord[i];
     }
-    // Black out all letters
-    for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
-      document.querySelectorAll('.alphabet')[i].style.background = 'black';
-      document.querySelectorAll('.alphabet')[i].style.color = '#39ff14';
-    }
+    LetterColorReset();
   }
 
   function GameWin() {
@@ -292,12 +305,8 @@ letterButton.addEventListener('click', function(e) {
       gallowsCount[i].style.display = 'none';
     }
     // Displays win page
-    document.querySelector('.win').style.display = 'flex';
-    // Turns all letters off
-    for (i = 0; i < document.querySelectorAll('.alphabet').length; i++) {
-      document.querySelectorAll('.alphabet')[i].style.color = '#39ff14';
-      document.querySelectorAll('.alphabet')[i].style.background = 'black';
-    }
+    gallowsWin.style.display = 'flex';
+    LetterColorReset();
   }
 });
 
