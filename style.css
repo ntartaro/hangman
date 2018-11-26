@@ -1,3 +1,48 @@
+/* html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+} */
+
+/* REST */
 body {
   background-color: black;
   font-family: 'VT323', monospace;
@@ -207,14 +252,15 @@ h3 {
 
 /*Wrapper for letter buttons*/
 .letters-wrapper {
+  display: none;
   box-shadow: 0px 0px 8px #39ff14;
   border-radius: 6px;
   padding: 8px 0px 8px 0px;
   border: solid 2px #39ff14;
-  display: grid;
+  /* display: grid; */
   grid-gap: 10px;
-  max-width: 200px;
-  margin: auto;
+  /* max-width: 250px;
+  margin: auto; */
   align-items: center;
   justify-content: center;
   grid-template-areas:
@@ -292,6 +338,64 @@ h3 {
   .letter-button {
     height: 16px;
     width: 16px;
+  }
+}
+
+/* MOBILE SMALL */
+@media screen and (max-width: 420px) {
+  h3 {
+    font-size: 9px;
+  }
+
+  .start-button{
+    width: 225px;
+  }
+
+  .gallows-wrapper {
+    margin-top: -50px;
+    font-size: 13px;
+  }
+
+  .data {
+    width: 160px;
+  }
+
+  .begin-button {
+    height: 32px;
+    width: 100px;
+    font-size: 17px;
+  }
+  .random-button {
+    height: 32px;
+    width: 100px;
+    font-size: 17px;
+  }
+  .reset-button {
+    margin-top: 10px;
+    height: 32px;
+    width: 100px;
+    font-size: 17px;
+  }
+  .letters-wrapper {
+    height: 220px;
+    width: 300px;
+    margin: 0px auto;
+    margin-top: 12px;
+    grid-gap: 13px;
+  }
+  .letter-button {
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+    border-radius: 12px;
+  }
+  .generated-answer-wrapper {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .loser {
+    margin-top: -18px;
   }
 }
 

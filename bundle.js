@@ -103,6 +103,7 @@ randomButton.addEventListener('click', function(e) {
     console.log(randomWord);
     console.log(storedWord);
     LetterBoxCreator();
+    letterButton.style.display = 'grid';
   }
 });
 
@@ -134,6 +135,7 @@ beginButton.addEventListener('click', function(e) {
       console.log(userWord);
       console.log(storedWord);
       LetterBoxCreator();
+      letterButton.style.display = 'grid';
     }
   }
 });
@@ -177,6 +179,7 @@ resetButton.addEventListener('click', function(e) {
       letterButtons[i].style.color = 'black';
     }
     RemoveAnswers();
+    letterButton.style.display = 'none';
   }
 
   function RemoveAnswers() {
