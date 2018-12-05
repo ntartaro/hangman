@@ -377,3 +377,6 @@ letterButton.addEventListener('click', function(e) {
   \\___//   					 
    -----
 </pre> */}
+
+
+// <input class="data" type="text" onkeyup="this.value = validateKeyStrokes(this.value)" />
