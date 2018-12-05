@@ -259,7 +259,7 @@ h3 {
   border: solid 2px #39ff14;
   /* display: grid; */
   grid-gap: 10px;
-  max-width: 250px;
+  width: 250px;
   margin: auto;
   align-items: center;
   justify-content: center;
